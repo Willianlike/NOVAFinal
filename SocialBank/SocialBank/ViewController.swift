@@ -9,9 +9,14 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    let kek = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(kek)
+        kek.backgroundColor = .green
+        kek.frame = view.bounds
         // Do any additional setup after loading the view.
     }
 
