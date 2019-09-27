@@ -15,6 +15,9 @@
 		16713842233E365900DC31A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16713840233E365900DC31A4 /* LaunchScreen.storyboard */; };
 		1671384D233E365A00DC31A4 /* SocialBankTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1671384C233E365A00DC31A4 /* SocialBankTests.swift */; };
 		16713858233E365A00DC31A4 /* SocialBankUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16713857233E365A00DC31A4 /* SocialBankUITests.swift */; };
+		16713866233E3D2000DC31A4 /* BankIniciativeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16713865233E3D2000DC31A4 /* BankIniciativeVC.swift */; };
+		16713868233E3F2100DC31A4 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16713867233E3F2100DC31A4 /* LoginVC.swift */; };
+		3FAFE306FD3D9F425E716767 /* Pods_SocialBank.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 728AC1CAFD5402155F4F345F /* Pods_SocialBank.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,11 @@
 		16713853233E365A00DC31A4 /* SocialBankUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SocialBankUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		16713857233E365A00DC31A4 /* SocialBankUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialBankUITests.swift; sourceTree = "<group>"; };
 		16713859233E365A00DC31A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		16713865233E3D2000DC31A4 /* BankIniciativeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankIniciativeVC.swift; sourceTree = "<group>"; };
+		16713867233E3F2100DC31A4 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		38BEB8264ACF599A472DB5E4 /* Pods-SocialBank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialBank.debug.xcconfig"; path = "Target Support Files/Pods-SocialBank/Pods-SocialBank.debug.xcconfig"; sourceTree = "<group>"; };
+		5E473E4A51FB9F44C3066E5C /* Pods-SocialBank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialBank.release.xcconfig"; path = "Target Support Files/Pods-SocialBank/Pods-SocialBank.release.xcconfig"; sourceTree = "<group>"; };
+		728AC1CAFD5402155F4F345F /* Pods_SocialBank.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialBank.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FAFE306FD3D9F425E716767 /* Pods_SocialBank.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +85,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F267820CCEBFB8AFB8080A5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				728AC1CAFD5402155F4F345F /* Pods_SocialBank.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		16713829233E365800DC31A4 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +100,8 @@
 				1671384B233E365A00DC31A4 /* SocialBankTests */,
 				16713856233E365A00DC31A4 /* SocialBankUITests */,
 				16713833233E365800DC31A4 /* Products */,
+				41ACF6F268B2A9C83852015F /* Pods */,
+				0F267820CCEBFB8AFB8080A5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,6 +121,8 @@
 				16713835233E365800DC31A4 /* AppDelegate.swift */,
 				16713837233E365800DC31A4 /* SceneDelegate.swift */,
 				16713839233E365800DC31A4 /* ViewController.swift */,
+				16713865233E3D2000DC31A4 /* BankIniciativeVC.swift */,
+				16713867233E3F2100DC31A4 /* LoginVC.swift */,
 				1671383B233E365800DC31A4 /* Main.storyboard */,
 				1671383E233E365900DC31A4 /* Assets.xcassets */,
 				16713840233E365900DC31A4 /* LaunchScreen.storyboard */,
@@ -128,6 +149,16 @@
 			path = SocialBankUITests;
 			sourceTree = "<group>";
 		};
+		41ACF6F268B2A9C83852015F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				38BEB8264ACF599A472DB5E4 /* Pods-SocialBank.debug.xcconfig */,
+				5E473E4A51FB9F44C3066E5C /* Pods-SocialBank.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +166,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1671385C233E365A00DC31A4 /* Build configuration list for PBXNativeTarget "SocialBank" */;
 			buildPhases = (
+				7659CB2FBD13DF11BADF7AB2 /* [CP] Check Pods Manifest.lock */,
 				1671382E233E365800DC31A4 /* Sources */,
 				1671382F233E365800DC31A4 /* Frameworks */,
 				16713830233E365800DC31A4 /* Resources */,
+				95B543F6383CEC791C35CDA4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -254,6 +287,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7659CB2FBD13DF11BADF7AB2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SocialBank-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		95B543F6383CEC791C35CDA4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SocialBank/Pods-SocialBank-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SocialBank/Pods-SocialBank-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SocialBank/Pods-SocialBank-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1671382E233E365800DC31A4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -262,6 +337,8 @@
 				1671383A233E365800DC31A4 /* ViewController.swift in Sources */,
 				16713836233E365800DC31A4 /* AppDelegate.swift in Sources */,
 				16713838233E365800DC31A4 /* SceneDelegate.swift in Sources */,
+				16713866233E3D2000DC31A4 /* BankIniciativeVC.swift in Sources */,
+				16713868233E3F2100DC31A4 /* LoginVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +509,7 @@
 		};
 		1671385D233E365A00DC31A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38BEB8264ACF599A472DB5E4 /* Pods-SocialBank.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -451,6 +529,7 @@
 		};
 		1671385E233E365A00DC31A4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E473E4A51FB9F44C3066E5C /* Pods-SocialBank.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
