@@ -1,0 +1,595 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		16713836233E365800DC31A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16713835233E365800DC31A4 /* AppDelegate.swift */; };
+		16713838233E365800DC31A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16713837233E365800DC31A4 /* SceneDelegate.swift */; };
+		1671383A233E365800DC31A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16713839233E365800DC31A4 /* ViewController.swift */; };
+		1671383D233E365800DC31A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1671383B233E365800DC31A4 /* Main.storyboard */; };
+		1671383F233E365900DC31A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1671383E233E365900DC31A4 /* Assets.xcassets */; };
+		16713842233E365900DC31A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16713840233E365900DC31A4 /* LaunchScreen.storyboard */; };
+		1671384D233E365A00DC31A4 /* SocialBankTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1671384C233E365A00DC31A4 /* SocialBankTests.swift */; };
+		16713858233E365A00DC31A4 /* SocialBankUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16713857233E365A00DC31A4 /* SocialBankUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		16713849233E365A00DC31A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1671382A233E365800DC31A4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 16713831233E365800DC31A4;
+			remoteInfo = SocialBank;
+		};
+		16713854233E365A00DC31A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1671382A233E365800DC31A4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 16713831233E365800DC31A4;
+			remoteInfo = SocialBank;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		16713832233E365800DC31A4 /* SocialBank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialBank.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		16713835233E365800DC31A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		16713837233E365800DC31A4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		16713839233E365800DC31A4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1671383C233E365800DC31A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1671383E233E365900DC31A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		16713841233E365900DC31A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		16713843233E365900DC31A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		16713848233E365A00DC31A4 /* SocialBankTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SocialBankTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1671384C233E365A00DC31A4 /* SocialBankTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialBankTests.swift; sourceTree = "<group>"; };
+		1671384E233E365A00DC31A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		16713853233E365A00DC31A4 /* SocialBankUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SocialBankUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		16713857233E365A00DC31A4 /* SocialBankUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialBankUITests.swift; sourceTree = "<group>"; };
+		16713859233E365A00DC31A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1671382F233E365800DC31A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16713845233E365A00DC31A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16713850233E365A00DC31A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		16713829233E365800DC31A4 = {
+			isa = PBXGroup;
+			children = (
+				16713834233E365800DC31A4 /* SocialBank */,
+				1671384B233E365A00DC31A4 /* SocialBankTests */,
+				16713856233E365A00DC31A4 /* SocialBankUITests */,
+				16713833233E365800DC31A4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		16713833233E365800DC31A4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				16713832233E365800DC31A4 /* SocialBank.app */,
+				16713848233E365A00DC31A4 /* SocialBankTests.xctest */,
+				16713853233E365A00DC31A4 /* SocialBankUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		16713834233E365800DC31A4 /* SocialBank */ = {
+			isa = PBXGroup;
+			children = (
+				16713835233E365800DC31A4 /* AppDelegate.swift */,
+				16713837233E365800DC31A4 /* SceneDelegate.swift */,
+				16713839233E365800DC31A4 /* ViewController.swift */,
+				1671383B233E365800DC31A4 /* Main.storyboard */,
+				1671383E233E365900DC31A4 /* Assets.xcassets */,
+				16713840233E365900DC31A4 /* LaunchScreen.storyboard */,
+				16713843233E365900DC31A4 /* Info.plist */,
+			);
+			path = SocialBank;
+			sourceTree = "<group>";
+		};
+		1671384B233E365A00DC31A4 /* SocialBankTests */ = {
+			isa = PBXGroup;
+			children = (
+				1671384C233E365A00DC31A4 /* SocialBankTests.swift */,
+				1671384E233E365A00DC31A4 /* Info.plist */,
+			);
+			path = SocialBankTests;
+			sourceTree = "<group>";
+		};
+		16713856233E365A00DC31A4 /* SocialBankUITests */ = {
+			isa = PBXGroup;
+			children = (
+				16713857233E365A00DC31A4 /* SocialBankUITests.swift */,
+				16713859233E365A00DC31A4 /* Info.plist */,
+			);
+			path = SocialBankUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		16713831233E365800DC31A4 /* SocialBank */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1671385C233E365A00DC31A4 /* Build configuration list for PBXNativeTarget "SocialBank" */;
+			buildPhases = (
+				1671382E233E365800DC31A4 /* Sources */,
+				1671382F233E365800DC31A4 /* Frameworks */,
+				16713830233E365800DC31A4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SocialBank;
+			productName = SocialBank;
+			productReference = 16713832233E365800DC31A4 /* SocialBank.app */;
+			productType = "com.apple.product-type.application";
+		};
+		16713847233E365A00DC31A4 /* SocialBankTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1671385F233E365A00DC31A4 /* Build configuration list for PBXNativeTarget "SocialBankTests" */;
+			buildPhases = (
+				16713844233E365A00DC31A4 /* Sources */,
+				16713845233E365A00DC31A4 /* Frameworks */,
+				16713846233E365A00DC31A4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1671384A233E365A00DC31A4 /* PBXTargetDependency */,
+			);
+			name = SocialBankTests;
+			productName = SocialBankTests;
+			productReference = 16713848233E365A00DC31A4 /* SocialBankTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		16713852233E365A00DC31A4 /* SocialBankUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 16713862233E365A00DC31A4 /* Build configuration list for PBXNativeTarget "SocialBankUITests" */;
+			buildPhases = (
+				1671384F233E365A00DC31A4 /* Sources */,
+				16713850233E365A00DC31A4 /* Frameworks */,
+				16713851233E365A00DC31A4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				16713855233E365A00DC31A4 /* PBXTargetDependency */,
+			);
+			name = SocialBankUITests;
+			productName = SocialBankUITests;
+			productReference = 16713853233E365A00DC31A4 /* SocialBankUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1671382A233E365800DC31A4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = "Вильян Яумбаев";
+				TargetAttributes = {
+					16713831233E365800DC31A4 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+					16713847233E365A00DC31A4 = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 16713831233E365800DC31A4;
+					};
+					16713852233E365A00DC31A4 = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 16713831233E365800DC31A4;
+					};
+				};
+			};
+			buildConfigurationList = 1671382D233E365800DC31A4 /* Build configuration list for PBXProject "SocialBank" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 16713829233E365800DC31A4;
+			productRefGroup = 16713833233E365800DC31A4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				16713831233E365800DC31A4 /* SocialBank */,
+				16713847233E365A00DC31A4 /* SocialBankTests */,
+				16713852233E365A00DC31A4 /* SocialBankUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		16713830233E365800DC31A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16713842233E365900DC31A4 /* LaunchScreen.storyboard in Resources */,
+				1671383F233E365900DC31A4 /* Assets.xcassets in Resources */,
+				1671383D233E365800DC31A4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16713846233E365A00DC31A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16713851233E365A00DC31A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1671382E233E365800DC31A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1671383A233E365800DC31A4 /* ViewController.swift in Sources */,
+				16713836233E365800DC31A4 /* AppDelegate.swift in Sources */,
+				16713838233E365800DC31A4 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16713844233E365A00DC31A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1671384D233E365A00DC31A4 /* SocialBankTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1671384F233E365A00DC31A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16713858233E365A00DC31A4 /* SocialBankUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1671384A233E365A00DC31A4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 16713831233E365800DC31A4 /* SocialBank */;
+			targetProxy = 16713849233E365A00DC31A4 /* PBXContainerItemProxy */;
+		};
+		16713855233E365A00DC31A4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 16713831233E365800DC31A4 /* SocialBank */;
+			targetProxy = 16713854233E365A00DC31A4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1671383B233E365800DC31A4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1671383C233E365800DC31A4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		16713840233E365900DC31A4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				16713841233E365900DC31A4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1671385A233E365A00DC31A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1671385B233E365A00DC31A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1671385D233E365A00DC31A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HDF5KZUR3R;
+				INFOPLIST_FILE = SocialBank/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = NOVA.SocialBank;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1671385E233E365A00DC31A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HDF5KZUR3R;
+				INFOPLIST_FILE = SocialBank/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = NOVA.SocialBank;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		16713860233E365A00DC31A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HDF5KZUR3R;
+				INFOPLIST_FILE = SocialBankTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = NOVA.SocialBankTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SocialBank.app/SocialBank";
+			};
+			name = Debug;
+		};
+		16713861233E365A00DC31A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HDF5KZUR3R;
+				INFOPLIST_FILE = SocialBankTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = NOVA.SocialBankTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SocialBank.app/SocialBank";
+			};
+			name = Release;
+		};
+		16713863233E365A00DC31A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HDF5KZUR3R;
+				INFOPLIST_FILE = SocialBankUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = NOVA.SocialBankUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SocialBank;
+			};
+			name = Debug;
+		};
+		16713864233E365A00DC31A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HDF5KZUR3R;
+				INFOPLIST_FILE = SocialBankUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = NOVA.SocialBankUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SocialBank;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1671382D233E365800DC31A4 /* Build configuration list for PBXProject "SocialBank" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1671385A233E365A00DC31A4 /* Debug */,
+				1671385B233E365A00DC31A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1671385C233E365A00DC31A4 /* Build configuration list for PBXNativeTarget "SocialBank" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1671385D233E365A00DC31A4 /* Debug */,
+				1671385E233E365A00DC31A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1671385F233E365A00DC31A4 /* Build configuration list for PBXNativeTarget "SocialBankTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16713860233E365A00DC31A4 /* Debug */,
+				16713861233E365A00DC31A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		16713862233E365A00DC31A4 /* Build configuration list for PBXNativeTarget "SocialBankUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16713863233E365A00DC31A4 /* Debug */,
+				16713864233E365A00DC31A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1671382A233E365800DC31A4 /* Project object */;
+}
