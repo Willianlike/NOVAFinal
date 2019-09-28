@@ -8,12 +8,13 @@
 
 import UIKit
 import SDWebImage
+import Cartography
 
 extension UIImageView {
     
-    func setUrlImage(url: String?) {
+    func setUrlImage(url: String?, placeholder: UIImage? = nil) {
         guard let url = url, let Url = URL(string: url) else { return }
-        self.sd_setImage(with: Url, completed: nil)
+        self.sd_setImage(with: Url, placeholderImage: placeholder)
     }
     
 }
@@ -44,6 +45,14 @@ extension UIScrollView {
     }
 }
 
+
+func setEqualW(_ view: UIView, views: UIView...) {
+    for i in views {
+        constrain(view, i) { (view, i) in
+            i.width == view.width
+        }
+    }
+}
 
 extension UIView {
     @discardableResult

@@ -40,10 +40,9 @@ class MainTabBar: UITabBarController {
     }
     
     static func getDumpVC() -> UIViewController {
-        let json = JSON(parseJSON: BankIniciativeModel.getMock())
-        let model = try! BankIniciativeModel(json: json)
-        let vc = BankIniciativeVC(model: model)
-        return vc
+        let vc = IniciativeListingVC(provider: ApiProvider.shared)
+        let vc1 = MainNavVC(rootViewController: vc)
+        return UIViewController()
     }
     
 }

@@ -18,6 +18,13 @@ struct BankIniciativeModel: JSONDecodable, Equatable {
     var upvotes: Int
     var downvotes: Int
     var voteStatus: VoteStatus
+    let date: Date
+    
+    var dateText: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yy"
+        return "Голосование до " + formatter.string(from: date)
+    }
     
     init(json: JSON) throws {
         id = try json["id"].reqString()
@@ -28,6 +35,7 @@ struct BankIniciativeModel: JSONDecodable, Equatable {
         upvotes = try json["upvotes"].reqInt()
         downvotes = try json["downvotes"].reqInt()
         voteStatus = VoteStatus(rawValue: json["vote"].stringValue) ?? .none
+        date = Date(timeIntervalSince1970: TimeInterval(try json["deadlineTs"].reqInt()))
     }
     
     static func getMock() -> String {

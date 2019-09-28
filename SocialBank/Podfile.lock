@@ -2,6 +2,9 @@ PODS:
   - Alamofire (4.9.0)
   - Cartography (4.0.0)
   - Differentiator (4.0.1)
+  - InputBarAccessoryView (4.3.1):
+    - InputBarAccessoryView/Core (= 4.3.1)
+  - InputBarAccessoryView/Core (4.3.1)
   - Moya (13.0.1):
     - Moya/Core (= 13.0.1)
   - Moya/Core (13.0.1):
@@ -32,6 +35,7 @@ PODS:
 
 DEPENDENCIES:
   - Cartography
+  - InputBarAccessoryView
   - Moya
   - PKHUD
   - RxCocoa
@@ -47,6 +51,7 @@ SPEC REPOS:
     - Alamofire
     - Cartography
     - Differentiator
+    - InputBarAccessoryView
     - Moya
     - PKHUD
     - Result
@@ -63,6 +68,7 @@ SPEC CHECKSUMS:
   Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
   Cartography: c5626d29056b20f1e95c017326ee4df57cc39ad8
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  InputBarAccessoryView: 58a348be7ea2736c7eec60e5c315511c2dbb39fd
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
@@ -75,6 +81,6 @@ SPEC CHECKSUMS:
   SDWebImage: 96d7f03415ccb28d299d765f93557ff8a617abd8
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 2b0e7931a0491cac2fd5e23f922b47e566a5330e
+PODFILE CHECKSUM: fe3901f99b99678ce915d67a9f6de8887b3a8e3c
 
 COCOAPODS: 1.7.1

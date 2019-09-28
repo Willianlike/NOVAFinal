@@ -52,6 +52,15 @@ class ApiProvider {
             .catchErrorJustReturn(.failure(.iniciativeList))
     }
     
+    typealias IniciativeCommentsResult = Result<IniciativeCommentsResponse, NError>
+    func getIniciativeComments(request: IniciativeCommentsRequest) -> Observable<IniciativeCommentsResult>  {
+        return provider.rx.request(.iniciativeComments(request))
+            .asObservable()
+            .mapObject(type: IniciativeCommentsResponse.self)
+            .map { .success($0) }
+            .catchErrorJustReturn(.failure(.iniciativeList))
+    }
+    
     typealias AnswerResult = Result<Void, NError>
     func postAnswer(request: AnswerRequest, iniciativeId: String) -> Observable<AnswerResult>  {
         return provider.rx.request(.answer(request, iniciativeId: iniciativeId))

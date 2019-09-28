@@ -65,4 +65,13 @@ struct Images {
     static var star_selected: UIImage? {
         return UIImage(named: "star_selected")
     }
+    static var back: UIImage? {
+        return UIImage(named: "back")
+    }
+    static var profile_hint: UIImage? {
+        return UIImage(named: "profile_hint")
+    }
+    static var golosovanie: UIImage? {
+        return UIImage(named: "golosovanie")
+    }
 }

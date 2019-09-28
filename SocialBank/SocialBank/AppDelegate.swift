@@ -8,6 +8,8 @@
 
 import UIKit
 
+var appNavigationVC: UINavigationController?
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     

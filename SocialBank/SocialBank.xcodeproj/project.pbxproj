@@ -66,6 +66,13 @@
 		16713876233E520D00DC31A4 /* MainNavVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16713875233E520D00DC31A4 /* MainNavVC.swift */; };
 		1698EF20233F4C5400444C5B /* QuestionRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698EF1F233F4C5400444C5B /* QuestionRating.swift */; };
 		1698EF22233F625900444C5B /* IniciativeFullTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698EF21233F625900444C5B /* IniciativeFullTopBar.swift */; };
+		1698EF24233F820700444C5B /* BaseTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698EF23233F820700444C5B /* BaseTopView.swift */; };
+		1698EF27233F93AA00444C5B /* DiscussionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698EF26233F93AA00444C5B /* DiscussionVC.swift */; };
+		1698EF29233F962400444C5B /* DiscussionCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698EF28233F962400444C5B /* DiscussionCollectionCell.swift */; };
+		1698EF2B233F966700444C5B /* DiscussionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698EF2A233F966700444C5B /* DiscussionModel.swift */; };
+		1698EF2D233FC0BC00444C5B /* IniciativeCommentsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698EF2C233FC0BC00444C5B /* IniciativeCommentsRequest.swift */; };
+		1698EF2F233FC1F100444C5B /* IniciativeCommentsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698EF2E233FC1F100444C5B /* IniciativeCommentsResponse.swift */; };
+		1698EF33233FCE9600444C5B /* MessageInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698EF32233FCE9600444C5B /* MessageInput.swift */; };
 		3FAFE306FD3D9F425E716767 /* Pods_SocialBank.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 728AC1CAFD5402155F4F345F /* Pods_SocialBank.framework */; };
 /* End PBXBuildFile section */
 
@@ -152,6 +159,13 @@
 		16713875233E520D00DC31A4 /* MainNavVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavVC.swift; sourceTree = "<group>"; };
 		1698EF1F233F4C5400444C5B /* QuestionRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRating.swift; sourceTree = "<group>"; };
 		1698EF21233F625900444C5B /* IniciativeFullTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IniciativeFullTopBar.swift; sourceTree = "<group>"; };
+		1698EF23233F820700444C5B /* BaseTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTopView.swift; sourceTree = "<group>"; };
+		1698EF26233F93AA00444C5B /* DiscussionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionVC.swift; sourceTree = "<group>"; };
+		1698EF28233F962400444C5B /* DiscussionCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionCollectionCell.swift; sourceTree = "<group>"; };
+		1698EF2A233F966700444C5B /* DiscussionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscussionModel.swift; sourceTree = "<group>"; };
+		1698EF2C233FC0BC00444C5B /* IniciativeCommentsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IniciativeCommentsRequest.swift; sourceTree = "<group>"; };
+		1698EF2E233FC1F100444C5B /* IniciativeCommentsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IniciativeCommentsResponse.swift; sourceTree = "<group>"; };
+		1698EF32233FCE9600444C5B /* MessageInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInput.swift; sourceTree = "<group>"; };
 		38BEB8264ACF599A472DB5E4 /* Pods-SocialBank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialBank.debug.xcconfig"; path = "Target Support Files/Pods-SocialBank/Pods-SocialBank.debug.xcconfig"; sourceTree = "<group>"; };
 		5E473E4A51FB9F44C3066E5C /* Pods-SocialBank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialBank.release.xcconfig"; path = "Target Support Files/Pods-SocialBank/Pods-SocialBank.release.xcconfig"; sourceTree = "<group>"; };
 		728AC1CAFD5402155F4F345F /* Pods_SocialBank.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialBank.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -220,6 +234,7 @@
 				1658428C233E6A0C0058AC6C /* MainTabBar.swift */,
 				16713875233E520D00DC31A4 /* MainNavVC.swift */,
 				165842A1233EA04E0058AC6C /* BaseVC.swift */,
+				1698EF23233F820700444C5B /* BaseTopView.swift */,
 			);
 			name = VCS;
 			sourceTree = "<group>";
@@ -333,6 +348,7 @@
 			children = (
 				16713835233E365800DC31A4 /* AppDelegate.swift */,
 				16713837233E365800DC31A4 /* SceneDelegate.swift */,
+				1698EF25233F939900444C5B /* Discussion */,
 				165842C0233F05AF0058AC6C /* Models */,
 				165842B9233EF55C0058AC6C /* IniciativeFull */,
 				1658429A233E9FD00058AC6C /* IniciativeListing */,
@@ -374,6 +390,19 @@
 				16584282233E5E660058AC6C /* LoginResponse.swift */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		1698EF25233F939900444C5B /* Discussion */ = {
+			isa = PBXGroup;
+			children = (
+				1698EF26233F93AA00444C5B /* DiscussionVC.swift */,
+				1698EF32233FCE9600444C5B /* MessageInput.swift */,
+				1698EF2A233F966700444C5B /* DiscussionModel.swift */,
+				1698EF28233F962400444C5B /* DiscussionCollectionCell.swift */,
+				1698EF2C233FC0BC00444C5B /* IniciativeCommentsRequest.swift */,
+				1698EF2E233FC1F100444C5B /* IniciativeCommentsResponse.swift */,
+			);
+			name = Discussion;
 			sourceTree = "<group>";
 		};
 		41ACF6F268B2A9C83852015F /* Pods */ = {
@@ -561,10 +590,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				165842CC233F19590058AC6C /* IniciativeFullRequest.swift in Sources */,
+				1698EF2B233F966700444C5B /* DiscussionModel.swift in Sources */,
 				1698EF20233F4C5400444C5B /* QuestionRating.swift in Sources */,
 				165842A8233EA5160058AC6C /* IniciativeListResponse.swift in Sources */,
 				165842DE233F411D0058AC6C /* InputGroupModel.swift in Sources */,
 				165842BF233F051F0058AC6C /* CheckboxGroupView.swift in Sources */,
+				1698EF2F233FC1F100444C5B /* IniciativeCommentsResponse.swift in Sources */,
 				165842A0233EA0270058AC6C /* IniciativeListingCell.swift in Sources */,
 				16584294233E74ED0058AC6C /* BankIniciativeModel.swift in Sources */,
 				165842AE233EC6140058AC6C /* VoteButton.swift in Sources */,
@@ -576,8 +607,10 @@
 				1698EF22233F625900444C5B /* IniciativeFullTopBar.swift in Sources */,
 				16713876233E520D00DC31A4 /* MainNavVC.swift in Sources */,
 				16713873233E515600DC31A4 /* EnterCodeVC.swift in Sources */,
+				1698EF29233F962400444C5B /* DiscussionCollectionCell.swift in Sources */,
 				165842C4233F05F90058AC6C /* CheckboxItemModel.swift in Sources */,
 				165842B2233ED99A0058AC6C /* InactiveListtopBar.swift in Sources */,
+				1698EF24233F820700444C5B /* BaseTopView.swift in Sources */,
 				165842C2233F05C00058AC6C /* CheckboxGroupModel.swift in Sources */,
 				1658428B233E64780058AC6C /* Extensions.swift in Sources */,
 				1658429C233E9FE60058AC6C /* IniciativeListingVC.swift in Sources */,
@@ -594,11 +627,13 @@
 				16584289233E632A0058AC6C /* APISessionManager.swift in Sources */,
 				16584297233E75C60058AC6C /* VotesStackView.swift in Sources */,
 				165842AA233EAB5C0058AC6C /* ReusableView.swift in Sources */,
+				1698EF2D233FC0BC00444C5B /* IniciativeCommentsRequest.swift in Sources */,
 				165842BB233EF56D0058AC6C /* IniciativeFullVC.swift in Sources */,
 				165842CE233F1E360058AC6C /* IniciativeFullResponse.swift in Sources */,
 				165842AC233EC3A30058AC6C /* Colors.swift in Sources */,
 				165842B4233EE7110058AC6C /* CustomTextField.swift in Sources */,
 				1658428F233E6B8A0058AC6C /* Images.swift in Sources */,
+				1698EF33233FCE9600444C5B /* MessageInput.swift in Sources */,
 				16713868233E3F2100DC31A4 /* LoginVC.swift in Sources */,
 				165842A2233EA04E0058AC6C /* BaseVC.swift in Sources */,
 				165842E2233F46980058AC6C /* QuestionTextArea.swift in Sources */,
@@ -609,6 +644,7 @@
 				1658428D233E6A0C0058AC6C /* MainTabBar.swift in Sources */,
 				165842B0233ED7580058AC6C /* SegmentedControl.swift in Sources */,
 				16584285233E5F210058AC6C /* NError.swift in Sources */,
+				1698EF27233F93AA00444C5B /* DiscussionVC.swift in Sources */,
 				165842DC233F39740058AC6C /* SectionView.swift in Sources */,
 				165842D0233F28AC0058AC6C /* AnswerRequest.swift in Sources */,
 				165842C6233F09B80058AC6C /* CheckboxCell.swift in Sources */,

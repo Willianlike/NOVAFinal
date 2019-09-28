@@ -16,6 +16,7 @@ def shared_pods
     pod 'Cartography'
     pod 'SDWebImage'
     pod 'PKHUD'
+    pod 'InputBarAccessoryView'
 
 end
 

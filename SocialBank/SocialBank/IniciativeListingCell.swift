@@ -18,6 +18,7 @@ class IniciativeListingCell: UICollectionViewCell, ReusableView {
     let descriptionLabel = UILabel()
     let votesView = VotesStackView()
     let stack = UIStackView()
+    let dateLabel = UILabel()
     
     let voteChanged = PublishSubject<VoteChanged>()
     
@@ -30,6 +31,7 @@ class IniciativeListingCell: UICollectionViewCell, ReusableView {
         contentView.addSubview(stack)
         let firstView = UIView()
         let lastView = UIView()
+        lastView.addSubview(dateLabel)
         lastView.addSubview(votesView)
         firstView.addSubview(icon)
         firstView.addSubview(title)
@@ -38,8 +40,8 @@ class IniciativeListingCell: UICollectionViewCell, ReusableView {
         stack.addArrangedSubview(descriptionLabel)
         stack.addArrangedSubview(lastView)
         
-        constrain(contentView, stack, firstView, icon, title, descriptionLabel, votesView, lastView)
-        { (contentView, stack, firstView, icon, title, descriptionLabel, votesView, lastView) in
+        constrain(contentView, stack, firstView, icon, title, descriptionLabel, votesView, lastView, dateLabel)
+        { (contentView, stack, firstView, icon, title, descriptionLabel, votesView, lastView, dateLabel) in
             stack.edges == inset(contentView.edges, 16, 16, 16, 16)
             
             firstView.width == stack.width
@@ -62,11 +64,19 @@ class IniciativeListingCell: UICollectionViewCell, ReusableView {
             votesView.bottom == lastView.bottom
             votesView.trailing == lastView.trailing
             votesView.leading >= lastView.leading
+            
+            dateLabel.top == lastView.top
+            dateLabel.bottom == lastView.bottom
+            dateLabel.trailing <= votesView.leading
+            dateLabel.leading == lastView.leading
         }
         
         descriptionLabel.numberOfLines = 5
         descriptionLabel.font = .b3()
         descriptionLabel.textColor = .primaryText
+        
+        dateLabel.font = .b3()
+        dateLabel.textColor = .primaryText
         
         title.numberOfLines = 2
         title.font = .b1(.semibold)
@@ -97,6 +107,7 @@ class IniciativeListingCell: UICollectionViewCell, ReusableView {
         votesView.voteStatus = item.voteStatus
         votesView.voteStatusChanged.asObservable().map { (item.id, $0) }
             .bind(to: voteChanged).disposed(by: disposeBag)
+        dateLabel.text = item.dateText
     }
     
     override func prepareForReuse() {

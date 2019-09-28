@@ -12,10 +12,11 @@ import RxCocoa
 import Cartography
 import PKHUD
 
-class IniciativeFullVC: UIViewController {
+class IniciativeFullVC: BaseVC {
     
-    let scrollView = UIScrollView()
-    let scrollContainer = UIView()
+    let discussBtn = UIButton(type: .system)
+    let discussBtn1 = UIButton(type: .system)
+    
     let container = UIStackView()
     
     let dateLabel = UILabel()
@@ -29,40 +30,41 @@ class IniciativeFullVC: UIViewController {
     let requestAnswers = PublishSubject<AnswerRequest>()
     let voteChanged = PublishSubject<VoteChanged>()
     
-    let disposeBag = DisposeBag()
-    
     init(model: BankIniciativeModel, provider: ApiProvider) {
         iniModel = model
         self.provider = provider
         super.init(nibName: nil, bundle: nil)
-        setupUI()
-        setupModel()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUI()
+        setupModel()
+    }
+    
     func setupScroll() {
-        view.backgroundColor = .white
-        view.addSubview(scrollView)
         scrollContainer.addSubview(container)
-        scrollView.addSubview(scrollContainer)
         constrain(view, scrollView, container, scrollContainer)
         { (view, scrollView, container, scrollContainer) in
-            scrollView.edges == view.edges
             container.edges == inset(scrollContainer.edges, 16, 16, 16, 16)
-            scrollContainer.edges == scrollView.edges
-            scrollContainer.width == scrollView.width
         }
     }
     
     func setupUI() {
         setupScroll()
         
+        let text = NSMutableAttributedString(string: iniModel.title,
+                                             attributes: [NSAttributedString.Key.font : UIFont.b1(.bold)])
+        
+        topView.title.attributedText = text
+        
         dateLabel.font = .b3()
         dateLabel.textColor = .primaryText
-        dateLabel.text = "date"
+        dateLabel.text = iniModel.dateText
         
         descriptionView.font = .b3()
         descriptionView.isScrollEnabled = false
@@ -97,6 +99,23 @@ class IniciativeFullVC: UIViewController {
             voteContainer.width == container.width
         }
         
+        view.addSubview(discussBtn)
+        discussBtn.setImage(Images.golosovanie, for: .normal)
+        view.addSubview(discussBtn1)
+        discussBtn1.setTitle("Обсудить", for: .normal)
+        discussBtn1.tintColor = .orange
+        
+        constrain(view, discussBtn, discussBtn1, containerView)
+        { (view, discussBtn, discussBtn1, containerView) in
+            discussBtn.trailing == view.trailing - 32
+            discussBtn.centerY == containerView.top
+            discussBtn.width == 60
+            discussBtn.height == 60
+            
+            discussBtn1.centerX == discussBtn.centerX
+            discussBtn1.top == discussBtn.bottom - 16
+        }
+        
     }
     
     func setupModel() {
@@ -120,10 +139,23 @@ class IniciativeFullVC: UIViewController {
         
         voteView.voteStatusChanged.asObservable().map { [unowned self] in (self.iniModel.id, $0) }
             .bind(to: voteChanged).disposed(by: disposeBag)
-        
-//        voteView.voteStatusChanged.asObservable().flatMap { [unowned self] in
-//            self.provider.vote(status: $0, id: self.iniModel.id)
-//            }.subscribe().disposed(by: disposeBag)
+            
+            discussBtn.rx.tap.subscribe(onNext: { [unowned self] _ in
+                self.openDiscuss()
+            }).disposed(by: disposeBag)
+            
+            discussBtn1.rx.tap.subscribe(onNext: { [unowned self] _ in
+                self.openDiscuss()
+            }).disposed(by: disposeBag)
+    }
+    
+    func openDiscuss() {
+        let vc = DiscussionVC(model: iniModel)
+        if let appNav = appNavigationVC {
+            appNav.pushViewController(vc, animated: true)
+        } else {
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func questionsSetup(questions: [QuestionModel]) {
