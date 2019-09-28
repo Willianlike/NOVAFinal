@@ -21,8 +21,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window!.windowScene = windowScene
-        window!.rootViewController = ViewController()
+        window!.rootViewController = getRootVC()
         window!.makeKeyAndVisible()
+    }
+    
+    func getRootVC() -> UIViewController {
+//        return MainTabBar.getTabBar()
+        let vc = LoginVC(provider: ApiProvider.shared)
+        let nav = MainNavVC(rootViewController: vc)
+        
+        return nav
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

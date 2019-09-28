@@ -2,15 +2,21 @@ platform :ios, '10.0'
 
 use_frameworks!
 
-def shared_pods    
+def shared_pods 
+    pod 'Moya'
+    pod 'SwiftyJSON'
+   
     pod 'RxSwift'
     pod 'RxCocoa'
     pod 'RxGesture'
     pod 'RxDataSources'
     pod 'RxKeyboard'
-    pod 'RxAnimated'
+    pod 'RxKeyboard'
     
     pod 'Cartography'
+    pod 'SDWebImage'
+    pod 'PKHUD'
+
 end
 
 target 'SocialBank' do
