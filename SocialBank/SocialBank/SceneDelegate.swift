@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func getRootVC() -> UIViewController {
-//        return MainTabBar.getTabBar()
+        return MainTabBar.getTabBar()
         let vc = LoginVC(provider: ApiProvider.shared)
         let nav = MainNavVC(rootViewController: vc)
         

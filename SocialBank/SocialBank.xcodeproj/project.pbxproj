@@ -64,6 +64,8 @@
 		1671386F233E48A100DC31A4 /* UDKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1671386E233E48A100DC31A4 /* UDKeys.swift */; };
 		16713873233E515600DC31A4 /* EnterCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16713872233E515600DC31A4 /* EnterCodeVC.swift */; };
 		16713876233E520D00DC31A4 /* MainNavVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16713875233E520D00DC31A4 /* MainNavVC.swift */; };
+		1698EF20233F4C5400444C5B /* QuestionRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698EF1F233F4C5400444C5B /* QuestionRating.swift */; };
+		1698EF22233F625900444C5B /* IniciativeFullTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698EF21233F625900444C5B /* IniciativeFullTopBar.swift */; };
 		3FAFE306FD3D9F425E716767 /* Pods_SocialBank.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 728AC1CAFD5402155F4F345F /* Pods_SocialBank.framework */; };
 /* End PBXBuildFile section */
 
@@ -148,6 +150,8 @@
 		1671386E233E48A100DC31A4 /* UDKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UDKeys.swift; sourceTree = "<group>"; };
 		16713872233E515600DC31A4 /* EnterCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterCodeVC.swift; sourceTree = "<group>"; };
 		16713875233E520D00DC31A4 /* MainNavVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavVC.swift; sourceTree = "<group>"; };
+		1698EF1F233F4C5400444C5B /* QuestionRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRating.swift; sourceTree = "<group>"; };
+		1698EF21233F625900444C5B /* IniciativeFullTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IniciativeFullTopBar.swift; sourceTree = "<group>"; };
 		38BEB8264ACF599A472DB5E4 /* Pods-SocialBank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialBank.debug.xcconfig"; path = "Target Support Files/Pods-SocialBank/Pods-SocialBank.debug.xcconfig"; sourceTree = "<group>"; };
 		5E473E4A51FB9F44C3066E5C /* Pods-SocialBank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialBank.release.xcconfig"; path = "Target Support Files/Pods-SocialBank/Pods-SocialBank.release.xcconfig"; sourceTree = "<group>"; };
 		728AC1CAFD5402155F4F345F /* Pods_SocialBank.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialBank.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -279,6 +283,8 @@
 				165842DB233F39740058AC6C /* SectionView.swift */,
 				165842DF233F42310058AC6C /* QuestionTextField.swift */,
 				165842E1233F46980058AC6C /* QuestionTextArea.swift */,
+				1698EF1F233F4C5400444C5B /* QuestionRating.swift */,
+				1698EF21233F625900444C5B /* IniciativeFullTopBar.swift */,
 			);
 			name = IniciativeFull;
 			sourceTree = "<group>";
@@ -555,6 +561,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				165842CC233F19590058AC6C /* IniciativeFullRequest.swift in Sources */,
+				1698EF20233F4C5400444C5B /* QuestionRating.swift in Sources */,
 				165842A8233EA5160058AC6C /* IniciativeListResponse.swift in Sources */,
 				165842DE233F411D0058AC6C /* InputGroupModel.swift in Sources */,
 				165842BF233F051F0058AC6C /* CheckboxGroupView.swift in Sources */,
@@ -566,6 +573,7 @@
 				16584283233E5E660058AC6C /* LoginResponse.swift in Sources */,
 				16584287233E60250058AC6C /* RxMoya.swift in Sources */,
 				165842D2233F30430058AC6C /* SelectorCell.swift in Sources */,
+				1698EF22233F625900444C5B /* IniciativeFullTopBar.swift in Sources */,
 				16713876233E520D00DC31A4 /* MainNavVC.swift in Sources */,
 				16713873233E515600DC31A4 /* EnterCodeVC.swift in Sources */,
 				165842C4233F05F90058AC6C /* CheckboxItemModel.swift in Sources */,

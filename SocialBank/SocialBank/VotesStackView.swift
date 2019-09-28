@@ -11,6 +11,8 @@ import RxSwift
 import RxCocoa
 import Cartography
 
+typealias VoteChanged = (String, VoteStatus)
+
 enum VoteStatus: String {
     case none
     case upvoted
@@ -62,11 +64,11 @@ class VotesStackView: UIView {
     
     private func setupModel() {
         upvoteBtn.rx.tap.subscribe(onNext: { [unowned self] _ in
-            self.voteStatus = .upvoted
+            self.voteStatus = self.voteStatus != .upvoted ? .upvoted : .none
         }).disposed(by: disposeBag)
         
         downvoteBtn.rx.tap.subscribe(onNext: { [unowned self] _ in
-            self.voteStatus = .downvoted
+            self.voteStatus = self.voteStatus != .downvoted ? .downvoted : .none
         }).disposed(by: disposeBag)
     }
     

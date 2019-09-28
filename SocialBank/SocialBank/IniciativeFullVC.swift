@@ -27,6 +27,7 @@ class IniciativeFullVC: UIViewController {
     
     let questions = BehaviorRelay<[QuestionModel]>(value: [])
     let requestAnswers = PublishSubject<AnswerRequest>()
+    let voteChanged = PublishSubject<VoteChanged>()
     
     let disposeBag = DisposeBag()
     
@@ -116,6 +117,13 @@ class IniciativeFullVC: UIViewController {
             .subscribe().disposed(by: disposeBag)
         
         scrollView.setKeyboardInset()
+        
+        voteView.voteStatusChanged.asObservable().map { [unowned self] in (self.iniModel.id, $0) }
+            .bind(to: voteChanged).disposed(by: disposeBag)
+        
+//        voteView.voteStatusChanged.asObservable().flatMap { [unowned self] in
+//            self.provider.vote(status: $0, id: self.iniModel.id)
+//            }.subscribe().disposed(by: disposeBag)
     }
     
     func questionsSetup(questions: [QuestionModel]) {

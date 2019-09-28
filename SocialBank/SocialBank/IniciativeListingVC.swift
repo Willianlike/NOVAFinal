@@ -35,6 +35,19 @@ class IniciativeListingVC: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            if let error = error {
+                print("D'oh: \(error.localizedDescription)")
+            } else {
+                DispatchQueue.main.async {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
+            }
+        }
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -73,8 +86,11 @@ class IniciativeListingVC: UIViewController {
         topBar.controlBar.setIndex(index: 0)
     }
     
+    var netVCDisposeBag = DisposeBag()
     func openIniciative(model: BankIniciativeModel) {
+        netVCDisposeBag = DisposeBag()
         let vc = IniciativeFullVC(model: model, provider: vm.provider)
+        vc.voteChanged.asObservable().bind(to: vm.voteChanged).disposed(by: netVCDisposeBag)
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -108,7 +124,8 @@ class IniciativeListingVC: UIViewController {
             case let .withoutImage(item):
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IniciativeListingCell.reuseIdentifier,
                                                               for: indexPath) as! IniciativeListingCell
-                cell.setupCell(item: item)
+                cell.setupCell(item: item, provider: self.vm.provider)
+                cell.voteChanged.bind(to: self.vm.voteChanged).disposed(by: cell.disposeBag)
                 return cell
             case let .withImage(item):
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IniciativeListingCellWithImage.reuseIdentifier,

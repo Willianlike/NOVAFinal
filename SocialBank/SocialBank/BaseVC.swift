@@ -10,9 +10,13 @@ import UIKit
 
 class BaseVC: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-    }
+//    let containerVIew = UIView()
+//    let scrollView = UIScrollView()
+//    let scrollContainer = UIView()
+//
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        view.backgroundColor = .white
+//    }
     
 }

@@ -70,11 +70,34 @@ class IniciativeListingVM {
     let error = PublishSubject<NError>()
     let loading = BehaviorRelay<Bool>(value: true)
     
+    let voteChanged = PublishSubject<VoteChanged>()
+    
     let limit = 20
+    
+    let disposeBag = DisposeBag()
     
     init(provider: ApiProvider) {
         self.provider = provider
         loadItems()
+        
+        voteChanged.asObservable().withLatestFrom(cells) {($0, $1)}
+            .map({ (voteChanged, cells) in
+                var cells = cells
+                for i in cells.indices {
+                    let cell = cells[i]
+                    var model = cell.getIniciativeModel()
+                    if model.id == voteChanged.0 {
+                        model.voteStatus = voteChanged.1
+                        cells[i] = .withoutImage(item: model)
+                    }
+                }
+                return cells
+            }).bind(to: cells)
+            .disposed(by: disposeBag)
+        
+        voteChanged.asObservable().flatMap {
+            provider.vote(status: $0.1, id: $0.0)
+            }.subscribe().disposed(by: disposeBag)
     }
     
     var loadItemsDispose = DisposeBag()

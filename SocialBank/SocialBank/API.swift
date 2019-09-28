@@ -15,9 +15,10 @@ enum API {
     case iniciativeFull(_ request: IniciativeFullRequest)
     case answer(_ request: AnswerRequest, iniciativeId: String)
     case vote(vote: VoteStatus, id: String)
+    case registerPushToken(token: Data)
     case logout
     
-    static let baseStringUrl = "http://10.178.196.149:8080/"
+    static let baseStringUrl = "http://10.178.198.0:8080/"
 }
 
 extension API: TargetType {
@@ -35,12 +36,14 @@ extension API: TargetType {
             url += "cbrf-web/api/initiative/form/"
         case .answer:
             url += "cbrf-web/api/initiative/form/answer/"
+        case .registerPushToken:
+            url += "cbrf-web/api/push/token/"
         case let .vote(vote, _):
             switch vote {
                 case .upvoted:
                 url += "cbrf-web/api/initiative/upvote/"
                 case .downvoted:
-                url += "cbrf-web/api/initiative/udownvote/"
+                url += "cbrf-web/api/initiative/downvote/"
                 case .none:
                 url += "cbrf-web/api/initiative/unvote/"
             }
@@ -86,9 +89,12 @@ extension API: TargetType {
         case let .answer(request, iniciativeId):
             params = request.getParams()
             params["initiativeId"] = Int(iniciativeId)!
-                    
+            
         case let .vote(_, iniciativeId):
             params["initiativeId"] = Int(iniciativeId)!
+            
+        case let .registerPushToken(token):
+            params["token"] = token
             
             
         default:

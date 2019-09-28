@@ -19,7 +19,7 @@ class IniciativeListingCell: UICollectionViewCell, ReusableView {
     let votesView = VotesStackView()
     let stack = UIStackView()
     
-    let disposeBag = DisposeBag()
+    let voteChanged = PublishSubject<VoteChanged>()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -82,17 +82,26 @@ class IniciativeListingCell: UICollectionViewCell, ReusableView {
         contentView.layer.borderColor = UIColor.border.cgColor
     }
     
+    var disposeBag = DisposeBag()
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupCell(item: BankIniciativeModel) {
+    func setupCell(item: BankIniciativeModel, provider: ApiProvider) {
         icon.setUrlImage(url: item.image)
         title.text = item.title
         descriptionLabel.text = item.description
         votesView.upvoteCount = item.upvotes
         votesView.downvoteCount = item.downvotes
         votesView.voteStatus = item.voteStatus
+        votesView.voteStatusChanged.asObservable().map { (item.id, $0) }
+            .bind(to: voteChanged).disposed(by: disposeBag)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
     }
     
     static func getCellHeight(width: CGFloat, item: BankIniciativeModel) -> CGFloat {

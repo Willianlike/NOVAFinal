@@ -47,18 +47,18 @@ extension QuestionModel {
         case .checkbox(let item):
             vm = getCheckbox(item: item)
             title = item.title
-            case .selector(let item):
-                vm = getSelector(item: item)
-                title = item.title
-                case .textField(let item):
-                    vm = getTextField(item: item)
-                    title = item.title
-                    case .textArea(let item):
-                        vm = getTextArea(item: item)
-                        title = item.title
-                        case .rating(let item):
-                            vm = getTextField(item: item)
-                            title = item.title
+        case .selector(let item):
+            vm = getSelector(item: item)
+            title = item.title
+        case .textField(let item):
+            vm = getTextField(item: item)
+            title = item.title
+        case .textArea(let item):
+            vm = getTextArea(item: item)
+            title = item.title
+        case .rating(let item):
+            vm = getRating(item: item)
+            title = item.title
         }
         let section = SectionView(title: title, view: vm.0)
         return (section, vm.1)
@@ -82,6 +82,11 @@ extension QuestionModel {
     func getTextArea(item: InputGroupModel) -> QuestionVM {
         let field = QuestionTextArea(model: item)
         return (field, field.subject)
+    }
+    
+    func getRating(item: InputGroupModel) -> QuestionVM {
+        let view = QuestionRating(model: item)
+        return (view, view.subject)
     }
     
 }

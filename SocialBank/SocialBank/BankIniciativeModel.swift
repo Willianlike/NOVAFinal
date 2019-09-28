@@ -27,7 +27,7 @@ struct BankIniciativeModel: JSONDecodable, Equatable {
         video = json["video_url"].string
         upvotes = try json["upvotes"].reqInt()
         downvotes = try json["downvotes"].reqInt()
-        voteStatus = VoteStatus(rawValue: json["vote_status"].stringValue) ?? .none
+        voteStatus = VoteStatus(rawValue: json["vote"].stringValue) ?? .none
     }
     
     static func getMock() -> String {

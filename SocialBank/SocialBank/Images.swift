@@ -59,4 +59,10 @@ struct Images {
     static var radio_selected: UIImage? {
         return UIImage(named: "radio_selected")
     }
+    static var star_empty: UIImage? {
+        return UIImage(named: "star_empty")
+    }
+    static var star_selected: UIImage? {
+        return UIImage(named: "star_selected")
+    }
 }

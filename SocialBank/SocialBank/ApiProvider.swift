@@ -19,6 +19,8 @@ class ApiProvider {
     //let moyaPlugins: [Moya.PluginType] = [NetworkLoggerPlugin(verbose: false, cURL: true), MoyaCacheablePlugin()]
     
     static let shared = ApiProvider()
+    
+    let disposeBag = DisposeBag()
 
     private init() {
         self.provider = MoyaProvider<API>(
@@ -56,6 +58,20 @@ class ApiProvider {
             .asObservable()
             .map { _ in .success(()) }
             .catchErrorJustReturn(.failure(.iniciativeList))
+    }
+    
+    typealias VoteResult = Result<Void, NError>
+    func vote(status: VoteStatus, id: String) -> Observable<VoteResult>  {
+        return provider.rx.request(.vote(vote: status, id: id))
+            .asObservable()
+            .map { _ in .success(()) }
+            .catchErrorJustReturn(.failure(.iniciativeList))
+    }
+    
+    func registerPushToken(token: Data) {
+        _ = provider.rx.request(.registerPushToken(token: token))
+            .subscribe()
+//        .disposed(by: disposeBag)
     }
     
     typealias IniciativeFullResult = Result<IniciativeFullResponse, NError>
