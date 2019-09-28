@@ -94,7 +94,7 @@ extension API: TargetType {
             params["initiativeId"] = Int(iniciativeId)!
             
         case let .registerPushToken(token):
-            params["token"] = token
+            params["token"] = token.hexString
             
             
         default:

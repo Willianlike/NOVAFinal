@@ -69,8 +69,17 @@ class ApiProvider {
     }
     
     func registerPushToken(token: Data) {
-        _ = provider.rx.request(.registerPushToken(token: token))
-            .subscribe()
+        
+        provider.request(.registerPushToken(token: token)) { (result) in
+            switch result {
+            case .success(let response):
+                break
+            case .failure(let err):
+                break
+            }
+        }
+//        _ = provider.rx.request(.registerPushToken(token: token))
+//            .subscribe()
 //        .disposed(by: disposeBag)
     }
     
