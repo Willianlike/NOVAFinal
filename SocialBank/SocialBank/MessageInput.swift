@@ -35,7 +35,7 @@ class iMessageInputBar: InputBarAccessoryView {
         sendButton.imageView?.backgroundColor = tintColor
         sendButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         sendButton.setSize(CGSize(width: 36, height: 36), animated: false)
-//        sendButton.image = #imageLiteral(resourceName: "ic_up")
+        sendButton.image = Images.send
         sendButton.title = nil
         sendButton.imageView?.layer.cornerRadius = 16
         sendButton.backgroundColor = .clear

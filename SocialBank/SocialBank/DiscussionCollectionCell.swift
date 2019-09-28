@@ -12,6 +12,7 @@ import Cartography
 class DiscussionCollectionCell: UICollectionViewCell, ReusableView {
     
     let img = UIImageView()
+    let replyImg = UIImageView()
     let name = UILabel()
     let online = UILabel()
     let date = UILabel()
@@ -20,6 +21,7 @@ class DiscussionCollectionCell: UICollectionViewCell, ReusableView {
     let stack = UIStackView()
     let horizontalStack = UIView()
     let nameStack = UIStackView()
+    let commentStack = UIStackView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,19 +39,36 @@ class DiscussionCollectionCell: UICollectionViewCell, ReusableView {
         comment.text = item.comment
         img.setUrlImage(url: item.img, placeholder: Images.profile_hint)
         date.text = item.dateText
+        replyImg.isHidden = !item.replyTo
+    }
+    
+    func updateColors(replyed: Bool) {
+        if replyed {
+            backgroundColor = .reply
+            name.textColor = .white
+            comment.textColor = .white
+        } else {
+            backgroundColor = .white
+            name.textColor = .primaryText
+            comment.textColor = .primaryText
+        }
     }
     
     static func getHeight(w: CGFloat, item: DiscussionModel) -> CGFloat {
         var h = CGFloat(48)
         h += 40
-        h += item.comment.height(withConstrainedWidth: w - 32, font: .b3())
+        let ww = w - 32 - (item.replyTo ? 24 : 0)
+        h += item.comment.height(withConstrainedWidth: ww, font: .b3())
         return h
     }
     
     func setupUI() {
         contentView.addSubview(stack)
         stack.addArrangedSubview(horizontalStack)
-        stack.addArrangedSubview(comment)
+        stack.addArrangedSubview(commentStack)
+        
+        commentStack.addArrangedSubview(replyImg)
+        commentStack.addArrangedSubview(comment)
         
         nameStack.addArrangedSubview(name)
         nameStack.addArrangedSubview(online)
@@ -68,15 +87,19 @@ class DiscussionCollectionCell: UICollectionViewCell, ReusableView {
         nameStack.distribution = .equalSpacing
         nameStack.spacing = 8
         
-//        horizontalStack.alignment = .fill
-//        horizontalStack.axis = .horizontal
-//        horizontalStack.distribution = .fill
-//        horizontalStack.spacing = 8
+        commentStack.alignment = .center
+        commentStack.axis = .horizontal
+        commentStack.distribution = .equalSpacing
+        commentStack.spacing = 8
 
-let imgSize = CGSize(width: 48, height: 48)
+        let imgSize = CGSize(width: 48, height: 48)
         
-        constrain(horizontalStack, img, nameStack, date)
-        { (view, img, nameStack, date) in
+        constrain(horizontalStack, img, nameStack, date, replyImg)
+        { (view, img, nameStack, date, replyImg) in
+            
+            replyImg.height == replyImg.width
+            replyImg.height == 16
+            
         img.height == imgSize.height
         img.width == imgSize.width
             img.top >= view.top

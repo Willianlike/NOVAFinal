@@ -74,4 +74,10 @@ struct Images {
     static var golosovanie: UIImage? {
         return UIImage(named: "golosovanie")
     }
+    static var send: UIImage? {
+        return UIImage(named: "send")
+    }
+    static var reply: UIImage? {
+        return UIImage(named: "reply")
+    }
 }

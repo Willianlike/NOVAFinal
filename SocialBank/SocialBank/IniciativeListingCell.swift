@@ -29,12 +29,12 @@ class IniciativeListingCell: UICollectionViewCell, ReusableView {
     
     func setupUI() {
         contentView.addSubview(stack)
-        let firstView = UIView()
+        let firstView = UIStackView()
         let lastView = UIView()
         lastView.addSubview(dateLabel)
         lastView.addSubview(votesView)
-        firstView.addSubview(icon)
-        firstView.addSubview(title)
+        firstView.addArrangedSubview(icon)
+        firstView.addArrangedSubview(title)
         
         stack.addArrangedSubview(firstView)
         stack.addArrangedSubview(descriptionLabel)
@@ -87,6 +87,11 @@ class IniciativeListingCell: UICollectionViewCell, ReusableView {
         stack.distribution = .equalSpacing
         stack.spacing = 8
         
+        firstView.alignment = .center
+        firstView.axis = .horizontal
+        firstView.distribution = .equalSpacing
+        firstView.spacing = 16
+        
         contentView.layer.cornerRadius = 30
         contentView.layer.borderWidth = 1
         contentView.layer.borderColor = UIColor.border.cgColor
@@ -100,6 +105,7 @@ class IniciativeListingCell: UICollectionViewCell, ReusableView {
     
     func setupCell(item: BankIniciativeModel, provider: ApiProvider) {
         icon.setUrlImage(url: item.image)
+        icon.isHidden = item.image == nil
         title.text = item.title
         descriptionLabel.text = item.description
         votesView.upvoteCount = item.upvotes
@@ -118,7 +124,7 @@ class IniciativeListingCell: UICollectionViewCell, ReusableView {
     static func getCellHeight(width: CGFloat, item: BankIniciativeModel) -> CGFloat {
         let descMaxH = "1\n2\n3\n4\n5".height(withConstrainedWidth: width, font: .b3())
         let descH = item.description.height(withConstrainedWidth: width, font: .b3())
-        let result = CGFloat(min(descH,descMaxH)) + CGFloat(40 + 48 + 52 + 32)
+        let result = CGFloat(min(descH,descMaxH)) + CGFloat(40 + 48 + 52 + 16)
         print(result)
         return result
     }

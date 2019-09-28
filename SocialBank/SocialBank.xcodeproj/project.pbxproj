@@ -73,6 +73,8 @@
 		1698EF2D233FC0BC00444C5B /* IniciativeCommentsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698EF2C233FC0BC00444C5B /* IniciativeCommentsRequest.swift */; };
 		1698EF2F233FC1F100444C5B /* IniciativeCommentsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698EF2E233FC1F100444C5B /* IniciativeCommentsResponse.swift */; };
 		1698EF33233FCE9600444C5B /* MessageInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698EF32233FCE9600444C5B /* MessageInput.swift */; };
+		1698EF35233FD36900444C5B /* SendCommentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698EF34233FD36900444C5B /* SendCommentRequest.swift */; };
+		1698EF37233FD41B00444C5B /* SendCommentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698EF36233FD41B00444C5B /* SendCommentResponse.swift */; };
 		3FAFE306FD3D9F425E716767 /* Pods_SocialBank.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 728AC1CAFD5402155F4F345F /* Pods_SocialBank.framework */; };
 /* End PBXBuildFile section */
 
@@ -166,6 +168,8 @@
 		1698EF2C233FC0BC00444C5B /* IniciativeCommentsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IniciativeCommentsRequest.swift; sourceTree = "<group>"; };
 		1698EF2E233FC1F100444C5B /* IniciativeCommentsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IniciativeCommentsResponse.swift; sourceTree = "<group>"; };
 		1698EF32233FCE9600444C5B /* MessageInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInput.swift; sourceTree = "<group>"; };
+		1698EF34233FD36900444C5B /* SendCommentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendCommentRequest.swift; sourceTree = "<group>"; };
+		1698EF36233FD41B00444C5B /* SendCommentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendCommentResponse.swift; sourceTree = "<group>"; };
 		38BEB8264ACF599A472DB5E4 /* Pods-SocialBank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialBank.debug.xcconfig"; path = "Target Support Files/Pods-SocialBank/Pods-SocialBank.debug.xcconfig"; sourceTree = "<group>"; };
 		5E473E4A51FB9F44C3066E5C /* Pods-SocialBank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialBank.release.xcconfig"; path = "Target Support Files/Pods-SocialBank/Pods-SocialBank.release.xcconfig"; sourceTree = "<group>"; };
 		728AC1CAFD5402155F4F345F /* Pods_SocialBank.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialBank.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -400,6 +404,8 @@
 				1698EF2A233F966700444C5B /* DiscussionModel.swift */,
 				1698EF28233F962400444C5B /* DiscussionCollectionCell.swift */,
 				1698EF2C233FC0BC00444C5B /* IniciativeCommentsRequest.swift */,
+				1698EF34233FD36900444C5B /* SendCommentRequest.swift */,
+				1698EF36233FD41B00444C5B /* SendCommentResponse.swift */,
 				1698EF2E233FC1F100444C5B /* IniciativeCommentsResponse.swift */,
 			);
 			name = Discussion;
@@ -626,12 +632,14 @@
 				1658427C233E5AED0058AC6C /* API.swift in Sources */,
 				16584289233E632A0058AC6C /* APISessionManager.swift in Sources */,
 				16584297233E75C60058AC6C /* VotesStackView.swift in Sources */,
+				1698EF35233FD36900444C5B /* SendCommentRequest.swift in Sources */,
 				165842AA233EAB5C0058AC6C /* ReusableView.swift in Sources */,
 				1698EF2D233FC0BC00444C5B /* IniciativeCommentsRequest.swift in Sources */,
 				165842BB233EF56D0058AC6C /* IniciativeFullVC.swift in Sources */,
 				165842CE233F1E360058AC6C /* IniciativeFullResponse.swift in Sources */,
 				165842AC233EC3A30058AC6C /* Colors.swift in Sources */,
 				165842B4233EE7110058AC6C /* CustomTextField.swift in Sources */,
+				1698EF37233FD41B00444C5B /* SendCommentResponse.swift in Sources */,
 				1658428F233E6B8A0058AC6C /* Images.swift in Sources */,
 				1698EF33233FCE9600444C5B /* MessageInput.swift in Sources */,
 				16713868233E3F2100DC31A4 /* LoginVC.swift in Sources */,

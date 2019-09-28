@@ -14,6 +14,7 @@ enum API {
     case iniciativeList(_ request: IniciativeListRequest)
     case iniciativeFull(_ request: IniciativeFullRequest)
     case iniciativeComments(_ request: IniciativeCommentsRequest)
+    case sendComment(_ request: SendCommentRequest)
     case answer(_ request: AnswerRequest, iniciativeId: String)
     case vote(vote: VoteStatus, id: String)
     case registerPushToken(token: Data)
@@ -41,6 +42,8 @@ extension API: TargetType {
             url += "cbrf-web/api/push/token/"
         case .iniciativeComments:
             url += "cbrf-web/api/initiative/comments/"
+        case .sendComment:
+            url += "cbrf-web/api/initiative/comments/add/"
         case let .vote(vote, _):
             switch vote {
                 case .upvoted:
@@ -98,8 +101,11 @@ extension API: TargetType {
             
         case let .registerPushToken(token):
             params["token"] = token.hexString
-                    
+            
         case let .iniciativeComments(request):
+            params = request.getParams()
+            
+        case let .sendComment(request):
             params = request.getParams()
             
         default:

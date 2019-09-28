@@ -16,6 +16,7 @@ import InputBarAccessoryView
 class DiscussionVC: BaseVC, InputBarAccessoryViewDelegate {
     
     let inputBar = iMessageInputBar()
+    private var keyboardManager = KeyboardManager()
     
     let comments = BehaviorRelay<[DiscussionModel]>(value: [])
     
@@ -23,6 +24,9 @@ class DiscussionVC: BaseVC, InputBarAccessoryViewDelegate {
     
     let model: BankIniciativeModel
     let provider = ApiProvider.shared
+    
+    let sendMessage = PublishSubject<SendCommentRequest>()
+    let requestComments = PublishSubject<Void>()
     
     init(model: BankIniciativeModel) {
         self.model = model
@@ -42,6 +46,25 @@ class DiscussionVC: BaseVC, InputBarAccessoryViewDelegate {
     func setupUI() {
         inputBar.delegate = self
         view.addSubview(inputBar)
+        inputBar.inputTextView.placeholder = "Напишите сообщение"
+        
+        // Binding the inputBar will set the needed callback actions to position the inputBar on top of the keyboard
+        keyboardManager.bind(inputAccessoryView: inputBar)
+        
+        // Binding to the tableView will enabled interactive dismissal
+        keyboardManager.bind(to: collection)
+        
+        // Add some extra handling to manage content inset
+        keyboardManager.on(event: .didChangeFrame) { [weak self] (notification) in
+            let barHeight = self?.inputBar.bounds.height ?? 0
+            self?.collection.contentInset.bottom = barHeight + notification.endFrame.height
+            self?.collection.scrollIndicatorInsets.bottom = barHeight + notification.endFrame.height
+            }.on(event: .didHide) { [weak self] _ in
+                let barHeight = self?.inputBar.bounds.height ?? 0
+                self?.collection.contentInset.bottom = barHeight
+                self?.collection.scrollIndicatorInsets.bottom = barHeight
+        }
+        collection.keyboardDismissMode = .interactive
         
         let text = NSMutableAttributedString(string: model.title,
                                              attributes: [NSAttributedString.Key.font : UIFont.b1(.bold)])
@@ -53,14 +76,12 @@ class DiscussionVC: BaseVC, InputBarAccessoryViewDelegate {
         collection.dataSource = self
         collection.delegate = self
         collection.contentInset.top = 20
+        collection.contentInset.bottom = 60
         
         containerView.addSubview(collection)
         collection.backgroundColor = .white
-        constrain(containerView, collection, inputBar, view) { (cont, collection, inputBar, view) in
+        constrain(containerView, collection) { (cont, collection) in
             collection.edges == cont.edges
-            inputBar.leading == view.leading
-            inputBar.trailing == view.trailing
-            inputBar.bottom == view.bottom
         }
     }
     
@@ -70,13 +91,28 @@ class DiscussionVC: BaseVC, InputBarAccessoryViewDelegate {
             self.collection.reloadData()
             }).disposed(by: disposeBag)
         
-        provider.getIniciativeComments(request: IniciativeCommentsRequest(id: model.id))
-            .subscribe(onNext: { [unowned self] result in
-                self.resultHandle(result: result)
-                }).disposed(by: disposeBag)
+        requestComments.asObservable().flatMap { [unowned self] in
+            self.provider.getIniciativeComments(request: IniciativeCommentsRequest(id: self.model.id))
+        }
+        .subscribe(onNext: { [unowned self] result in
+            self.resultCommentsHandle(result: result)
+        }).disposed(by: disposeBag)
+        
+        sendMessage.asObservable()
+            .do(onNext: { [unowned self] _ in
+                self.view.endEditing(true)
+            })
+            .flatMap { [unowned self] in
+            self.provider.sendComment(request: $0)
+        }
+        .subscribe(onNext: { [unowned self] result in
+            self.resultSendCommentHandle(result: result)
+            }).disposed(by: disposeBag)
+        
+        requestComments.onNext(())
     }
     
-    func resultHandle(result: ApiProvider.IniciativeCommentsResult) {
+    func resultCommentsHandle(result: ApiProvider.IniciativeCommentsResult) {
         HUD.hide()
         switch result {
         case let .success(response):
@@ -84,6 +120,28 @@ class DiscussionVC: BaseVC, InputBarAccessoryViewDelegate {
         case let .failure(err):
             HUD.flash(.label(err.localizedDescription), delay: 1)
         }
+    }
+    
+    func resultSendCommentHandle(result: ApiProvider.SendCommentResult) {
+        HUD.hide()
+        switch result {
+        case let .success(response):
+            if !response.success {
+                HUD.flash(.label(NError.iniciativeFull.localizedDescription), delay: 1)
+            } else {
+                requestComments.onNext(())
+                inputBar.inputTextView.text = ""
+            }
+        case let .failure(err):
+            HUD.flash(.label(err.localizedDescription), delay: 1)
+        }
+    }
+    
+    func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
+        guard !text.isEmpty else { return }
+        let reply: Int? = comments.value.first(where: { $0.replyTo })?.id
+        let request = SendCommentRequest(id: model.id, replyTo: reply, text: text)
+        sendMessage.onNext(request)
     }
     
 }
@@ -98,6 +156,18 @@ extension DiscussionVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLa
         let item = comments.value[indexPath.row]
         cell.setup(item: item)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var newComms = comments.value
+        for i in newComms.indices {
+            if i == indexPath.row {
+                newComms[i].replyTo.toggle()
+            } else {
+                newComms[i].replyTo = false
+            }
+        }
+        comments.accept(newComms)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

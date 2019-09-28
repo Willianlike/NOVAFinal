@@ -113,7 +113,7 @@ class IniciativeFullVC: BaseVC {
             discussBtn.height == 60
             
             discussBtn1.centerX == discussBtn.centerX
-            discussBtn1.top == discussBtn.bottom - 16
+            discussBtn1.top == discussBtn.bottom - 8
         }
         
     }

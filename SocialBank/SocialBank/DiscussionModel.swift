@@ -17,10 +17,11 @@ struct DiscussionModel: JSONDecodable {
     let isOnline: Bool
     let date: Date
     let comment: String
+    var replyTo: Bool = false
     
     var dateText: String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "mm:ss"
+        formatter.dateFormat = "HH:mm"
         return formatter.string(from: date)
     }
     
