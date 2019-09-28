@@ -80,4 +80,10 @@ struct Images {
     static var reply: UIImage? {
         return UIImage(named: "reply")
     }
+    static var lock: UIImage? {
+        return UIImage(named: "lock")
+    }
+    static var chevron: UIImage? {
+        return UIImage(named: "chevron")
+    }
 }

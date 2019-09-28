@@ -162,7 +162,7 @@ extension DiscussionVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLa
         var newComms = comments.value
         for i in newComms.indices {
             if i == indexPath.row {
-                newComms[i].replyTo.toggle()
+                newComms[i].replyTo = !newComms[i].replyTo
             } else {
                 newComms[i].replyTo = false
             }

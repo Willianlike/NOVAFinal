@@ -15,7 +15,7 @@ class SectionView: UIView {
         super.init(frame: CGRect())
         
         let header = UILabel()
-        header.font = .b1()
+        header.font = .b2()
         header.numberOfLines = 0
         header.textColor = .primaryText
         header.text = title

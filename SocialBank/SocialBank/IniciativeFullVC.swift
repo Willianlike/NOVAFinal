@@ -18,6 +18,7 @@ class IniciativeFullVC: BaseVC {
     let discussBtn1 = UIButton(type: .system)
     
     let container = UIStackView()
+    let questionsStack = UIStackView()
     
     let dateLabel = UILabel()
     let descriptionView = UITextView()
@@ -62,14 +63,16 @@ class IniciativeFullVC: BaseVC {
         
         topView.title.attributedText = text
         
-        dateLabel.font = .b3()
+        dateLabel.font = .b2(.semibold)
         dateLabel.textColor = .primaryText
-        dateLabel.text = iniModel.dateText
+        dateLabel.numberOfLines = 0
+        dateLabel.text = iniModel.dateText + "\n\n"
         
-        descriptionView.font = .b3()
+        descriptionView.font = .b2()
         descriptionView.isScrollEnabled = false
         descriptionView.textColor = .primaryText
         descriptionView.text = iniModel.description
+        descriptionView.contentInset = .init(top: 0, left: -4, bottom: 0, right: 4)
         
         let voteContainer = UIView()
         voteContainer.addSubview(voteView)
@@ -88,16 +91,42 @@ class IniciativeFullVC: BaseVC {
         container.distribution = .equalSpacing
         container.spacing = 8
         
+        questionsStack.alignment = .center
+        questionsStack.axis = .vertical
+        questionsStack.distribution = .equalSpacing
+        questionsStack.spacing = 8
+        
+        let descriptionLabel = UILabel()
+        
+        descriptionLabel.text = "Описание инициативы"
+        descriptionLabel.textColor = .primaryText
+        descriptionLabel.font = .h4(.semibold)
+        
         container.addArrangedSubview(dateLabel)
+        container.addArrangedSubview(descriptionLabel)
         container.addArrangedSubview(descriptionView)
         container.addArrangedSubview(voteContainer)
         
-        constrain(dateLabel, descriptionView, voteContainer, container)
-        { (dateLabel, descriptionView, voteContainer, container) in
-            dateLabel.width == container.width
-            descriptionView.width == container.width
-            voteContainer.width == container.width
-        }
+        let votePls = RatingMotivation()
+        let voteThnx = RatingMotivation()
+        let voteLabel = UILabel()
+        
+        voteThnx.title.text = "Спасибо за ваши ответы!"
+        voteThnx.desc.text = "Вы получаете баллы рейтинга"
+        voteThnx.button.backgroundColor = .orange
+        voteThnx.button.setTitleColor(.white, for: .disabled)
+        voteThnx.button.layer.borderWidth = 0
+        
+        voteLabel.text = "Ваша оценка"
+        voteLabel.textColor = .primaryText
+        voteLabel.font = .h4(.semibold)
+        
+        container.addArrangedSubview(votePls)
+        container.addArrangedSubview(voteLabel)
+        container.addArrangedSubview(questionsStack)
+        container.addArrangedSubview(voteThnx)
+        
+        setEqualW(container, views: dateLabel, descriptionView, voteContainer, questionsStack, votePls, voteLabel, descriptionLabel, voteThnx)
         
         view.addSubview(discussBtn)
         discussBtn.setImage(Images.golosovanie, for: .normal)
@@ -159,13 +188,16 @@ class IniciativeFullVC: BaseVC {
     }
     
     func questionsSetup(questions: [QuestionModel]) {
+        for view in questionsStack.arrangedSubviews {
+            questionsStack.removeArrangedSubview(view)
+        }
         for (i, questionVM) in questions.enumerated() {
             let (questitionView, subject) = questionVM.getView()
-            container.addArrangedSubview(questitionView)
+            questionsStack.addArrangedSubview(questitionView)
             
-            constrain(questitionView, container)
-            { (questitionView, container) in
-                questitionView.width == container.width
+            constrain(questitionView, questionsStack)
+            { (questitionView, questionsStack) in
+                questitionView.width == questionsStack.width
             }
             
             if i != questions.count - 1 {

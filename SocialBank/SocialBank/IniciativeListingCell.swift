@@ -14,6 +14,7 @@ import RxCocoa
 class IniciativeListingCell: UICollectionViewCell, ReusableView {
     
     let icon = UIImageView()
+    let chevron = UIImageView()
     let title = UILabel()
     let descriptionLabel = UILabel()
     let votesView = VotesStackView()
@@ -35,10 +36,19 @@ class IniciativeListingCell: UICollectionViewCell, ReusableView {
         lastView.addSubview(votesView)
         firstView.addArrangedSubview(icon)
         firstView.addArrangedSubview(title)
+        firstView.addArrangedSubview(chevron)
         
         stack.addArrangedSubview(firstView)
         stack.addArrangedSubview(descriptionLabel)
         stack.addArrangedSubview(lastView)
+        
+        chevron.image = Images.chevron
+        chevron.contentMode = .scaleAspectFit
+        
+        constrain(chevron) { (chevron) in
+            chevron.height == 13
+            chevron.width == 13
+        }
         
         constrain(contentView, stack, firstView, icon, title, descriptionLabel, votesView, lastView, dateLabel)
         { (contentView, stack, firstView, icon, title, descriptionLabel, votesView, lastView, dateLabel) in
@@ -50,15 +60,15 @@ class IniciativeListingCell: UICollectionViewCell, ReusableView {
             
             icon.width == 40
             icon.height == 40
-            icon.leading == firstView.leading
-            icon.top >= firstView.top
-            icon.bottom <= firstView.bottom
-            icon.centerY == firstView.centerY
-            
-            title.leading == icon.trailing + 16
-            title.top == firstView.top
-            title.bottom == firstView.bottom
-            title.trailing == firstView.trailing
+//            icon.leading == firstView.leading
+//            icon.top >= firstView.top
+//            icon.bottom <= firstView.bottom
+//            icon.centerY == firstView.centerY
+//            
+//            title.leading == icon.trailing + 16
+//            title.top == firstView.top
+//            title.bottom == firstView.bottom
+//            title.trailing == firstView.trailing
             
             votesView.top == lastView.top
             votesView.bottom == lastView.bottom
@@ -89,7 +99,7 @@ class IniciativeListingCell: UICollectionViewCell, ReusableView {
         
         firstView.alignment = .center
         firstView.axis = .horizontal
-        firstView.distribution = .equalSpacing
+        firstView.distribution = .fillProportionally
         firstView.spacing = 16
         
         contentView.layer.cornerRadius = 30
@@ -122,11 +132,15 @@ class IniciativeListingCell: UICollectionViewCell, ReusableView {
     }
     
     static func getCellHeight(width: CGFloat, item: BankIniciativeModel) -> CGFloat {
+        var h = CGFloat(48)
         let descMaxH = "1\n2\n3\n4\n5".height(withConstrainedWidth: width, font: .b3())
         let descH = item.description.height(withConstrainedWidth: width, font: .b3())
-        let result = CGFloat(min(descH,descMaxH)) + CGFloat(40 + 48 + 52 + 16)
-        print(result)
-        return result
+        h += CGFloat(min(descH,descMaxH))
+        h += 35 + 40
+//        let result =  + CGFloat(40 + 48 + 52 + 16)
+//        print(result)
+//        return result
+        return h
     }
     
 }

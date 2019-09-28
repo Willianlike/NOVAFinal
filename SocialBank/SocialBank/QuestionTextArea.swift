@@ -27,6 +27,8 @@ class QuestionTextArea: UIView {
         addBorders(edges: .all)
         
         addSubview(textView)
+        backgroundColor = .ultraLight
+        textView.backgroundColor = .ultraLight
         
         constrain(self, textView) { (view, textView) in
             textView.edges == inset(view.edges, 8, 13, 8, 13)

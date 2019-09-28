@@ -20,17 +20,18 @@ class MainTabBar: UITabBarController {
         vcs.append(vc1)
         
         
-        let vc2 = getDumpVC()
-        vc2.tabBarItem = UITabBarItem(title: nil, image: Images.chart, tag: 2)
-        vcs.append(vc2)
+//        let vc2 = getDumpVC()
+//        vc2.tabBarItem = UITabBarItem(title: nil, image: Images.chart, tag: 2)
+//        vcs.append(vc2)
         
         
-        let vc3 = getDumpVC()
+        let vc3 = KnowledgeVC(provider: ApiProvider.shared)
+        let nav3 = MainNavVC(rootViewController: vc3)
         vc3.tabBarItem = UITabBarItem(title: nil, image: Images.book, tag: 3)
-        vcs.append(vc3)
+        vcs.append(nav3)
         
         
-        let vc4 = getDumpVC()
+        let vc4 = ProfileVC1()
         vc4.tabBarItem = UITabBarItem(title: nil, image: Images.account, tag: 4)
         vcs.append(vc4)
         

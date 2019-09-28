@@ -44,6 +44,8 @@ class InactiveListtopBar: UIView {
         titleLabel.font = .h2(.bold)
         titleLabel.textColor = .topBarText
         titleLabel.text = "Инициативы"
+        titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.minimumScaleFactor = 0.5
         
         searchBtn.setImage(Images.search, for: .normal)
         searchBtn.tintColor = .topBarText

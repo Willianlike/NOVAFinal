@@ -26,6 +26,7 @@ class QuestionTextField: UITextField {
         constrain(self) { (view) in
             view.height == 52
         }
+        backgroundColor = .ultraLight
         if !model.input.isNilOrEmpty {
             text = model.input
         }

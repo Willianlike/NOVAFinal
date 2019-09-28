@@ -13,6 +13,9 @@ import Cartography
 extension UIImageView {
     
     func setUrlImage(url: String?, placeholder: UIImage? = nil) {
+        if let pl = placeholder {
+            image = pl
+        }
         guard let url = url, let Url = URL(string: url) else { return }
         self.sd_setImage(with: Url, placeholderImage: placeholder)
     }

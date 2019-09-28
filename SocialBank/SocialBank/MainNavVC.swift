@@ -12,4 +12,9 @@ class MainNavVC: UINavigationController {
     
     
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNavigationBarHidden(true, animated: animated)
+    }
+    
 }

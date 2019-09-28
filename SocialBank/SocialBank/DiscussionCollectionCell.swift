@@ -40,6 +40,7 @@ class DiscussionCollectionCell: UICollectionViewCell, ReusableView {
         img.setUrlImage(url: item.img, placeholder: Images.profile_hint)
         date.text = item.dateText
         replyImg.isHidden = !item.replyTo
+        updateColors(replyed: item.replyTo)
     }
     
     func updateColors(replyed: Bool) {
@@ -89,7 +90,7 @@ class DiscussionCollectionCell: UICollectionViewCell, ReusableView {
         
         commentStack.alignment = .center
         commentStack.axis = .horizontal
-        commentStack.distribution = .equalSpacing
+        commentStack.distribution = .fillProportionally
         commentStack.spacing = 8
 
         let imgSize = CGSize(width: 48, height: 48)
@@ -97,11 +98,11 @@ class DiscussionCollectionCell: UICollectionViewCell, ReusableView {
         constrain(horizontalStack, img, nameStack, date, replyImg)
         { (view, img, nameStack, date, replyImg) in
             
-            replyImg.height == replyImg.width
+            replyImg.width == 16
             replyImg.height == 16
             
-        img.height == imgSize.height
-        img.width == imgSize.width
+            img.height == imgSize.height
+            img.width == imgSize.width
             img.top >= view.top
             img.bottom <= view.bottom
             img.centerY == view.centerY
@@ -122,7 +123,10 @@ class DiscussionCollectionCell: UICollectionViewCell, ReusableView {
         comment.font = .b3()
         comment.numberOfLines = 0
         
-        date.textColor = .border
+        replyImg.tintColor = .white
+        replyImg.image = Images.reply
+        
+        date.textColor = UIColor.primaryText.withAlphaComponent(0.7)
         date.font = .b3()
         
         name.textColor = .primaryText
@@ -137,7 +141,7 @@ class DiscussionCollectionCell: UICollectionViewCell, ReusableView {
         img.clipsToBounds = true
         
         setEqualW(nameStack, views: name, online)
-        setEqualW(stack, views: comment, horizontalStack)
+        setEqualW(stack, views: commentStack, horizontalStack)
         
         constrain(stack, contentView) { (stack, view) in
             stack.edges == inset(view.edges, 16)

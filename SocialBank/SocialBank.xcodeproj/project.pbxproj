@@ -75,6 +75,11 @@
 		1698EF33233FCE9600444C5B /* MessageInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698EF32233FCE9600444C5B /* MessageInput.swift */; };
 		1698EF35233FD36900444C5B /* SendCommentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698EF34233FD36900444C5B /* SendCommentRequest.swift */; };
 		1698EF37233FD41B00444C5B /* SendCommentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698EF36233FD41B00444C5B /* SendCommentResponse.swift */; };
+		1698EF3A233FE1E900444C5B /* KnowledgeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698EF39233FE1E900444C5B /* KnowledgeVC.swift */; };
+		1698EF3C233FE29B00444C5B /* KnowledgeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698EF3B233FE29B00444C5B /* KnowledgeModel.swift */; };
+		1698EF3E233FE36100444C5B /* KnowledgeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698EF3D233FE36100444C5B /* KnowledgeCollectionCell.swift */; };
+		1698EF402340016A00444C5B /* RatingMotivation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698EF3F2340016A00444C5B /* RatingMotivation.swift */; };
+		1698EF4323401E4F00444C5B /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698EF4223401E4F00444C5B /* ProfileVC.swift */; };
 		3FAFE306FD3D9F425E716767 /* Pods_SocialBank.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 728AC1CAFD5402155F4F345F /* Pods_SocialBank.framework */; };
 /* End PBXBuildFile section */
 
@@ -170,6 +175,11 @@
 		1698EF32233FCE9600444C5B /* MessageInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInput.swift; sourceTree = "<group>"; };
 		1698EF34233FD36900444C5B /* SendCommentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendCommentRequest.swift; sourceTree = "<group>"; };
 		1698EF36233FD41B00444C5B /* SendCommentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendCommentResponse.swift; sourceTree = "<group>"; };
+		1698EF39233FE1E900444C5B /* KnowledgeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeVC.swift; sourceTree = "<group>"; };
+		1698EF3B233FE29B00444C5B /* KnowledgeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeModel.swift; sourceTree = "<group>"; };
+		1698EF3D233FE36100444C5B /* KnowledgeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeCollectionCell.swift; sourceTree = "<group>"; };
+		1698EF3F2340016A00444C5B /* RatingMotivation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingMotivation.swift; sourceTree = "<group>"; };
+		1698EF4223401E4F00444C5B /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		38BEB8264ACF599A472DB5E4 /* Pods-SocialBank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialBank.debug.xcconfig"; path = "Target Support Files/Pods-SocialBank/Pods-SocialBank.debug.xcconfig"; sourceTree = "<group>"; };
 		5E473E4A51FB9F44C3066E5C /* Pods-SocialBank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialBank.release.xcconfig"; path = "Target Support Files/Pods-SocialBank/Pods-SocialBank.release.xcconfig"; sourceTree = "<group>"; };
 		728AC1CAFD5402155F4F345F /* Pods_SocialBank.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialBank.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -304,6 +314,7 @@
 				165842E1233F46980058AC6C /* QuestionTextArea.swift */,
 				1698EF1F233F4C5400444C5B /* QuestionRating.swift */,
 				1698EF21233F625900444C5B /* IniciativeFullTopBar.swift */,
+				1698EF3F2340016A00444C5B /* RatingMotivation.swift */,
 			);
 			name = IniciativeFull;
 			sourceTree = "<group>";
@@ -352,6 +363,8 @@
 			children = (
 				16713835233E365800DC31A4 /* AppDelegate.swift */,
 				16713837233E365800DC31A4 /* SceneDelegate.swift */,
+				1698EF4123401E4100444C5B /* Profile */,
+				1698EF38233FE1D400444C5B /* Knowledge */,
 				1698EF25233F939900444C5B /* Discussion */,
 				165842C0233F05AF0058AC6C /* Models */,
 				165842B9233EF55C0058AC6C /* IniciativeFull */,
@@ -409,6 +422,24 @@
 				1698EF2E233FC1F100444C5B /* IniciativeCommentsResponse.swift */,
 			);
 			name = Discussion;
+			sourceTree = "<group>";
+		};
+		1698EF38233FE1D400444C5B /* Knowledge */ = {
+			isa = PBXGroup;
+			children = (
+				1698EF39233FE1E900444C5B /* KnowledgeVC.swift */,
+				1698EF3B233FE29B00444C5B /* KnowledgeModel.swift */,
+				1698EF3D233FE36100444C5B /* KnowledgeCollectionCell.swift */,
+			);
+			name = Knowledge;
+			sourceTree = "<group>";
+		};
+		1698EF4123401E4100444C5B /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				1698EF4223401E4F00444C5B /* ProfileVC.swift */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 		41ACF6F268B2A9C83852015F /* Pods */ = {
@@ -608,6 +639,7 @@
 				1658429E233EA00C0058AC6C /* IniciativeListingCellWithImage.swift in Sources */,
 				16713836233E365800DC31A4 /* AppDelegate.swift in Sources */,
 				16584283233E5E660058AC6C /* LoginResponse.swift in Sources */,
+				1698EF3C233FE29B00444C5B /* KnowledgeModel.swift in Sources */,
 				16584287233E60250058AC6C /* RxMoya.swift in Sources */,
 				165842D2233F30430058AC6C /* SelectorCell.swift in Sources */,
 				1698EF22233F625900444C5B /* IniciativeFullTopBar.swift in Sources */,
@@ -621,6 +653,7 @@
 				1658428B233E64780058AC6C /* Extensions.swift in Sources */,
 				1658429C233E9FE60058AC6C /* IniciativeListingVC.swift in Sources */,
 				165842B8233EF1C00058AC6C /* GrayBtn.swift in Sources */,
+				1698EF402340016A00444C5B /* RatingMotivation.swift in Sources */,
 				165842D6233F30BF0058AC6C /* SelectorItemModel.swift in Sources */,
 				1671386F233E48A100DC31A4 /* UDKeys.swift in Sources */,
 				165842D8233F30CA0058AC6C /* SelectorGroupModel.swift in Sources */,
@@ -632,6 +665,7 @@
 				1658427C233E5AED0058AC6C /* API.swift in Sources */,
 				16584289233E632A0058AC6C /* APISessionManager.swift in Sources */,
 				16584297233E75C60058AC6C /* VotesStackView.swift in Sources */,
+				1698EF3A233FE1E900444C5B /* KnowledgeVC.swift in Sources */,
 				1698EF35233FD36900444C5B /* SendCommentRequest.swift in Sources */,
 				165842AA233EAB5C0058AC6C /* ReusableView.swift in Sources */,
 				1698EF2D233FC0BC00444C5B /* IniciativeCommentsRequest.swift in Sources */,
@@ -656,7 +690,9 @@
 				165842DC233F39740058AC6C /* SectionView.swift in Sources */,
 				165842D0233F28AC0058AC6C /* AnswerRequest.swift in Sources */,
 				165842C6233F09B80058AC6C /* CheckboxCell.swift in Sources */,
+				1698EF4323401E4F00444C5B /* ProfileVC.swift in Sources */,
 				165842C8233F16F30058AC6C /* QuestionModel.swift in Sources */,
+				1698EF3E233FE36100444C5B /* KnowledgeCollectionCell.swift in Sources */,
 				165842E0233F42310058AC6C /* QuestionTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
