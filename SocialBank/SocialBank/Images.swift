@@ -45,4 +45,18 @@ struct Images {
     static var bankLogo: UIImage? {
         return UIImage(named: "bankLogo")
     }
+    
+    
+    static var check_empty: UIImage? {
+        return UIImage(named: "check_empty")
+    }
+    static var check_selected: UIImage? {
+        return UIImage(named: "check_selected")
+    }
+    static var radio_empty: UIImage? {
+        return UIImage(named: "radio_empty")
+    }
+    static var radio_selected: UIImage? {
+        return UIImage(named: "radio_selected")
+    }
 }

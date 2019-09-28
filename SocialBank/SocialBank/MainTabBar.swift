@@ -14,7 +14,8 @@ class MainTabBar: UITabBarController {
     static func getTabBar() -> UIViewController {
         let tabbar = MainTabBar()
         var vcs = [UIViewController]()
-        let vc1 = IniciativeListingVC(provider: ApiProvider.shared)
+        let vc = IniciativeListingVC(provider: ApiProvider.shared)
+        let vc1 = MainNavVC(rootViewController: vc)
         vc1.tabBarItem = UITabBarItem(title: nil, image: Images.home, tag: 1)
         vcs.append(vc1)
         

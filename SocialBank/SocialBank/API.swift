@@ -12,7 +12,9 @@ import Moya
 enum API {
     case login(_ request: LoginRequest)
     case iniciativeList(_ request: IniciativeListRequest)
-    case iniciativeFull(_ request: IniciativeListRequest)
+    case iniciativeFull(_ request: IniciativeFullRequest)
+    case answer(_ request: AnswerRequest, iniciativeId: String)
+    case vote(vote: VoteStatus, id: String)
     case logout
     
     static let baseStringUrl = "http://10.178.196.149:8080/"
@@ -27,10 +29,21 @@ extension API: TargetType {
             url += "cbrf-web/api/auth/login/"
         case .logout:
             url += "cbrf-web/api/auth/logout/"
-            case .iniciativeList:
-                url += "cbrf-web/api/initiative/all/"
-                case .iniciativeList:
-                    url += "cbrf-web/api/initiative/all/"cbrf-web/api/initiative/form/
+        case .iniciativeList:
+            url += "cbrf-web/api/initiative/all/"
+        case .iniciativeFull:
+            url += "cbrf-web/api/initiative/form/"
+        case .answer:
+            url += "cbrf-web/api/initiative/form/answer/"
+        case let .vote(vote, _):
+            switch vote {
+                case .upvoted:
+                url += "cbrf-web/api/initiative/upvote/"
+                case .downvoted:
+                url += "cbrf-web/api/initiative/udownvote/"
+                case .none:
+                url += "cbrf-web/api/initiative/unvote/"
+            }
         default:
             break
         }
@@ -58,12 +71,26 @@ extension API: TargetType {
     var params: [String: Any] {
         var params = [String: Any]()
         switch self {
+            
         case let .login(request):
             params["login"] = request.login
             params["password"] = request.pass
+            
         case let .iniciativeList(request):
             params["offset"] = request.offset
             params["limit"] = request.limit
+            
+        case let .iniciativeFull(request):
+            params["initiativeId"] = Int(request.id)!
+                
+        case let .answer(request, iniciativeId):
+            params = request.getParams()
+            params["initiativeId"] = Int(iniciativeId)!
+                    
+        case let .vote(_, iniciativeId):
+            params["initiativeId"] = Int(iniciativeId)!
+            
+            
         default:
             break
         }
@@ -79,7 +106,11 @@ extension API: TargetType {
     }
     
     var headers: [String : String]? {
-        return nil
+        if let token = UserDefaults.standard.authToken {
+            return ["Authorization": "Bearer \(token)"]
+        } else {
+            return nil
+        }
     }
     
     

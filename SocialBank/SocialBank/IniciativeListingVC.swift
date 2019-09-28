@@ -30,6 +30,11 @@ class IniciativeListingVC: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -68,11 +73,22 @@ class IniciativeListingVC: UIViewController {
         topBar.controlBar.setIndex(index: 0)
     }
     
+    func openIniciative(model: BankIniciativeModel) {
+        let vc = IniciativeFullVC(model: model, provider: vm.provider)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func setupModel() {
         vm.cells.debug()
             .map({ [AnimatableSectionModel<Int, IniciativeCell>(model: 0, items: $0)] })
             .bind(to: collection.rx.items(dataSource: getDataSource()))
             .disposed(by: disposeBag)
+        
+        collection.rx.itemSelected.withLatestFrom(vm.cells) {($0, $1)}
+            .subscribe(onNext: { [unowned self] data in
+                let model = data.1[data.0.row]
+                self.openIniciative(model: model.getIniciativeModel())
+            }).disposed(by: disposeBag)
         
 //        topBar.controlBar.rx.controlEvent(UIControl.Event.valueChanged)
 //            .map({ [unowned self] _ in

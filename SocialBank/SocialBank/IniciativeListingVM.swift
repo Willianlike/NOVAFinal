@@ -31,6 +31,15 @@ enum IniciativeCell {
             return IniciativeListingCell.getCellHeight(width: width, item: item)
         }
     }
+    
+    func getIniciativeModel() -> BankIniciativeModel {
+        switch self {
+        case let .withImage(item):
+            return item
+        case let .withoutImage(item):
+            return item
+        }
+    }
 }
 
 extension IniciativeCell: IdentifiableType, Equatable, Hashable {

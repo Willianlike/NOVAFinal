@@ -49,4 +49,41 @@ class ApiProvider {
             .map { .success($0) }
             .catchErrorJustReturn(.failure(.iniciativeList))
     }
+    
+    typealias AnswerResult = Result<Void, NError>
+    func postAnswer(request: AnswerRequest, iniciativeId: String) -> Observable<AnswerResult>  {
+        return provider.rx.request(.answer(request, iniciativeId: iniciativeId))
+            .asObservable()
+            .map { _ in .success(()) }
+            .catchErrorJustReturn(.failure(.iniciativeList))
+    }
+    
+    typealias IniciativeFullResult = Result<IniciativeFullResponse, NError>
+    func getIniciativeFull(request: IniciativeFullRequest) -> Observable<IniciativeFullResult>  {
+//        let mock = JSON(parseJSON: """
+//        { "questions": [
+//
+//        { "id": "1",
+//        "items": [
+//        {"title": "T1byevsiyvuebsovubdohjbsovjhbeouvboayewbvojhabdjohvboahdbvohbao ufiuaeoi ", "id": 1},
+//        {"title": "T2", "id": 2},
+//        {"title": "T3", "id": 3}
+//        ]
+//        },
+//        { "id": "2",
+//        "items": [
+//        {"title": "T1", "id": 1},
+//        {"title": "T2", "id": 2},
+//        {"title": "T3", "id": 3}
+//        ]
+//        }]}
+//        """)
+//        print(mock)
+//        return Observable.just(.success(try! IniciativeFullResponse(json: mock)))
+        return provider.rx.request(.iniciativeFull(request))
+            .asObservable()
+            .mapObject(type: IniciativeFullResponse.self)
+            .map { .success($0) }
+            .catchErrorJustReturn(.failure(.iniciativeFull))
+    }
 }
