@@ -12,6 +12,7 @@ import Moya
 enum API {
     case login(_ request: LoginRequest)
     case codeSend(_ phone: String)
+    case passRecover(_ phone: String)
     case register(_ request: RegRequest)
     case iniciativeList(_ request: IniciativeListRequest)
     case iniciativeFull(_ request: IniciativeFullRequest)
@@ -36,6 +37,8 @@ extension API: TargetType {
             url += "api/auth/getsms/"
         case .register:
             url += "api/auth/register/"
+        case .passRecover:
+            url += "api/auth/recover/"
         case .logout:
             url += "api/auth/logout/"
         case .iniciativeList:
@@ -92,6 +95,9 @@ extension API: TargetType {
             params["password"] = request.pass
             
         case let .codeSend(phone):
+            params["phone"] = phone
+            
+        case let .passRecover(phone):
             params["phone"] = phone
             
         case let .register(request):

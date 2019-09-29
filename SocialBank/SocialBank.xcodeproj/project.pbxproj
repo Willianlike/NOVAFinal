@@ -86,6 +86,8 @@
 		1698EF4B234082ED00444C5B /* RegRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698EF4A234082ED00444C5B /* RegRequest.swift */; };
 		1698EF4D23408EC000444C5B /* SimplePhoneField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698EF4C23408EC000444C5B /* SimplePhoneField.swift */; };
 		1698EF4F2340969E00444C5B /* RatingCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698EF4E2340969E00444C5B /* RatingCircleView.swift */; };
+		1698EF512340A57800444C5B /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698EF502340A57800444C5B /* StartScreen.swift */; };
+		1698EF532340B1F900444C5B /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1698EF522340B1F900444C5B /* ForgotPasswordVC.swift */; };
 		3FAFE306FD3D9F425E716767 /* Pods_SocialBank.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 728AC1CAFD5402155F4F345F /* Pods_SocialBank.framework */; };
 /* End PBXBuildFile section */
 
@@ -192,6 +194,8 @@
 		1698EF4A234082ED00444C5B /* RegRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegRequest.swift; sourceTree = "<group>"; };
 		1698EF4C23408EC000444C5B /* SimplePhoneField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplePhoneField.swift; sourceTree = "<group>"; };
 		1698EF4E2340969E00444C5B /* RatingCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingCircleView.swift; sourceTree = "<group>"; };
+		1698EF502340A57800444C5B /* StartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
+		1698EF522340B1F900444C5B /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		38BEB8264ACF599A472DB5E4 /* Pods-SocialBank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialBank.debug.xcconfig"; path = "Target Support Files/Pods-SocialBank/Pods-SocialBank.debug.xcconfig"; sourceTree = "<group>"; };
 		5E473E4A51FB9F44C3066E5C /* Pods-SocialBank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialBank.release.xcconfig"; path = "Target Support Files/Pods-SocialBank/Pods-SocialBank.release.xcconfig"; sourceTree = "<group>"; };
 		728AC1CAFD5402155F4F345F /* Pods_SocialBank.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialBank.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -376,6 +380,7 @@
 			children = (
 				16713835233E365800DC31A4 /* AppDelegate.swift */,
 				16713837233E365800DC31A4 /* SceneDelegate.swift */,
+				1698EF502340A57800444C5B /* StartScreen.swift */,
 				1698EF4123401E4100444C5B /* Profile */,
 				1698EF38233FE1D400444C5B /* Knowledge */,
 				1698EF25233F939900444C5B /* Discussion */,
@@ -415,6 +420,7 @@
 			isa = PBXGroup;
 			children = (
 				16713867233E3F2100DC31A4 /* LoginVC.swift */,
+				1698EF522340B1F900444C5B /* ForgotPasswordVC.swift */,
 				1698EF442340746F00444C5B /* RegisterVC.swift */,
 				1698EF4A234082ED00444C5B /* RegRequest.swift */,
 				1698EF462340760000444C5B /* RegField.swift */,
@@ -661,6 +667,7 @@
 				16713836233E365800DC31A4 /* AppDelegate.swift in Sources */,
 				16584283233E5E660058AC6C /* LoginResponse.swift in Sources */,
 				1698EF3C233FE29B00444C5B /* KnowledgeModel.swift in Sources */,
+				1698EF512340A57800444C5B /* StartScreen.swift in Sources */,
 				16584287233E60250058AC6C /* RxMoya.swift in Sources */,
 				165842D2233F30430058AC6C /* SelectorCell.swift in Sources */,
 				1698EF22233F625900444C5B /* IniciativeFullTopBar.swift in Sources */,
@@ -669,6 +676,7 @@
 				1698EF29233F962400444C5B /* DiscussionCollectionCell.swift in Sources */,
 				165842C4233F05F90058AC6C /* CheckboxItemModel.swift in Sources */,
 				165842B2233ED99A0058AC6C /* InactiveListtopBar.swift in Sources */,
+				1698EF532340B1F900444C5B /* ForgotPasswordVC.swift in Sources */,
 				1698EF24233F820700444C5B /* BaseTopView.swift in Sources */,
 				165842C2233F05C00058AC6C /* CheckboxGroupModel.swift in Sources */,
 				1658428B233E64780058AC6C /* Extensions.swift in Sources */,

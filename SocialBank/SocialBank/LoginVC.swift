@@ -38,6 +38,9 @@ class LoginVC: UIViewController {
     let titleLabel = UILabel()
     let entryLabel = UILabel()
     
+    let scrollView = UIScrollView()
+    let container = UIView()
+    
     let urLicoBtn = RoundedBtn(type: .system)
     
     let loginStyle = BehaviorRelay<LoginStyle>(value: .physic)
@@ -55,6 +58,8 @@ class LoginVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    var containerHeight: NSLayoutConstraint?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -64,15 +69,36 @@ class LoginVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        loginStyle.accept(.physic)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        loginField.field.becomeFirstResponder()
+        if loginStyle.value == .physic {
+            phoneField.field.becomeFirstResponder()
+        } else {
+            loginField.field.becomeFirstResponder()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        view.endEditing(true)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
     }
     
     var yPosConstraint: NSLayoutConstraint?
     var keyboardHeight = CGFloat(0)
+    
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+    }
     
     func setupUI() {
         view.rx.tapGesture().when(.recognized).subscribe(onNext: { [unowned self] _ in
@@ -106,7 +132,19 @@ class LoginVC: UIViewController {
         fullStack.addArrangedSubview(fieldsStack)
         fullStack.addArrangedSubview(urLicoBtn)
         
-        view.addSubview(fullStack)
+        view.addSubview(scrollView)
+        scrollView.addSubview(container)
+        container.addSubview(fullStack)
+        scrollView.keyboardDismissMode = .interactive
+        
+        constrain(view, scrollView, fullStack, container) { (view, scrollView, fullStack, container) in
+            scrollView.edges == view.edges
+            container.edges == scrollView.edges
+            container.width == scrollView.width
+            fullStack.edges == inset(container.edges, 16)
+        }
+        
+        scrollView.setKeyboardInset()
         
         setEqualW(fieldsStack, views: titleLabel, entryLabel, forgotPassBtn, regBtn, loginField, passField, loginBtn, phoneField)
         
@@ -119,8 +157,6 @@ class LoginVC: UIViewController {
             phoneField.height == 52
             fieldsStack.width == fullStack.width
             
-            fullStack.leading == view.leading + 20
-            fullStack.trailing == view.trailing - 20
         }
         
         constrain(bankImg, fullStack, urLicoBtn) { (bankImg, fullStack, urLicoBtn) in
@@ -130,8 +166,11 @@ class LoginVC: UIViewController {
         urLicoBtn.height == 52
         }
         
-        yPosConstraint = NSLayoutConstraint(item: fullStack, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: 0)
+        yPosConstraint = NSLayoutConstraint(item: fullStack, attribute: .centerY, relatedBy: .equal, toItem: container, attribute: .centerY, multiplier: 1, constant: 0)
         yPosConstraint?.isActive = true
+        
+        containerHeight = NSLayoutConstraint(item: container, attribute: .height, relatedBy: .equal, toItem: view, attribute: .height, multiplier: 1, constant: -100)
+        containerHeight?.isActive = true
         
         titleLabel.font = .h2(.bold)
         titleLabel.textAlignment = .center
@@ -210,11 +249,18 @@ class LoginVC: UIViewController {
         regBtn.rx.tap.subscribe(onNext: { [unowned self] _ in
             let vc = RegisterVC()
             self.navigationController?.pushViewController(vc, animated: true)
-            }).disposed(by: disposeBag)
+        }).disposed(by: disposeBag)
+        
+        forgotPassBtn.rx.tap.subscribe(onNext: { [unowned self] _ in
+            let vc = ForgotPasswordVC()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }).disposed(by: disposeBag)
+        
+        loginStyle.accept(.physic)
     }
     
     func toggleEntryTitle() {
-        if entryLabel.text == "Вход для юридических лиц" {
+        if loginStyle.value == .physic {
             entryLabel.text = "Вход для физических лиц"
             urLicoBtn.setTitle("Вход для юридических лиц", for: .normal)
             phoneField.isHidden = false
@@ -284,10 +330,10 @@ class LoginVC: UIViewController {
     func reguestAuth() {
         view.endEditing(true)
         HUD.show(.progress)
-        let loginText = loginStyle.value == .urlica ? phoneField.field.text : loginField.field.text
+        let loginText = loginStyle.value == .urlica ? loginField.field.text : phoneField.field.text
         let passText = passField.field.text
         if loginText.isNilOrEmpty {
-            if loginStyle.value == .urlica {
+            if loginStyle.value == .physic {
                 HUD.flash(.label("Проверьте поле телефона"), onView: nil, delay: 0.5) { [unowned self] (_) in
                     self.phoneField.field.becomeFirstResponder()
                 }

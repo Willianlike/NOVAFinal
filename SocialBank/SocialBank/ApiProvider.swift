@@ -85,7 +85,16 @@ class ApiProvider {
             .asObservable()
             .mapObject(type: SuccessResponse.self)
             .map { .success($0) }
-            .catchErrorJustReturn(.failure(.iniciativeList))
+            .catchErrorJustReturn(.failure(.reg))
+    }
+    
+    typealias PassRecoverResult = Result<SuccessResponse, NError>
+    func passRecover(phone: String) -> Observable<PassRecoverResult>  {
+        return provider.rx.request(.passRecover(phone))
+            .asObservable()
+            .mapObject(type: SuccessResponse.self)
+            .map { .success($0) }
+            .catchErrorJustReturn(.failure(.forgot))
     }
     
     typealias AnswerResult = Result<Void, NError>

@@ -52,6 +52,7 @@ class RegisterVC: BaseVC {
     var regKind = BehaviorRelay<ProfileKind>(value: .person)
     let requestCode = PublishSubject<String>()
     let requestReg = PublishSubject<RegRequest>()
+    let requestAuth = PublishSubject<LoginRequest>()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -61,6 +62,7 @@ class RegisterVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        scrollView.keyboardDismissMode = .interactive
         let text = NSMutableAttributedString(string: "Регистрация",
                                              attributes: [NSAttributedString.Key.font : UIFont.b1(.bold)])
         
@@ -132,12 +134,12 @@ class RegisterVC: BaseVC {
         
         constrain(codeField, kindButton, passfield, phoneField, phoneBtn, regBtn)
         { (codeField, kindButton, passfield, phoneField, phoneBtn, regBtn) in
-        codeField.height == 52
-        kindButton.height == 52
-        passfield.height == 52
-        phoneField.height == 52
-        phoneBtn.height == 52
-        regBtn.height == 52
+            codeField.height == 52
+            kindButton.height == 52
+            passfield.height == 52
+            phoneField.height == 52
+            phoneBtn.height == 52
+            regBtn.height == 52
         }
         
         scrollContainer.addSubview(phoneView)
@@ -161,7 +163,8 @@ class RegisterVC: BaseVC {
         
         Observable.of(requestReg.asObservable().map({ _ in Void()}),
             requestCode.asObservable().map({ _ in Void()})).merge()
-            .subscribe(onNext: { _ in
+            .subscribe(onNext: { [unowned self] _ in
+                self.view.endEditing(true)
                 HUD.show(.progress)
             }).disposed(by: disposeBag)
         
@@ -171,9 +174,14 @@ class RegisterVC: BaseVC {
                 switch result {
                 case .success(let bol):
                     if bol.success {
-                        self.navigationController?.popViewController(animated: true)
+//                        let requestAuth = LoginRequest(login: "+79995709730",
+//                                                       pass: "qweqwe")
+                        
+                        let requestAuth = LoginRequest(login: self.phoneField.text,
+                                                       pass: self.passfield.text)
+                        self.requestAuth.onNext(requestAuth)
                     } else {
-                        HUD.flash(.label(NError.auth.localizedDescription), delay: 1)
+                        HUD.flash(.label(NError.reg.localizedDescription), delay: 1)
                     }
                 case .failure(let err):
                     HUD.flash(.label(err.localizedDescription), delay: 1)
@@ -187,9 +195,23 @@ class RegisterVC: BaseVC {
                 case .success(let bol):
                     if bol.success {
                         self.regStyle.accept(.fields)
+                        self.codeField.becomeFirstResponder()
                     } else {
-                        HUD.flash(.label(NError.auth.localizedDescription), delay: 1)
+                        HUD.flash(.label(NError.reg.localizedDescription), delay: 1)
                     }
+                case .failure(let err):
+                    HUD.flash(.label(err.localizedDescription), delay: 1)
+                }
+            }).disposed(by: disposeBag)
+        
+        requestAuth.asObservable().flatMap({ [unowned self] in self.provider.auth(request: $0) })
+            .subscribe(onNext: { [unowned self] result in
+                HUD.hide()
+                switch result {
+                case .success(let bol):
+                    profileKind = bol.kind
+                    UserDefaults.standard.authToken = bol.token
+                    self.successAuth()
                 case .failure(let err):
                     HUD.flash(.label(err.localizedDescription), delay: 1)
                 }
@@ -203,8 +225,8 @@ class RegisterVC: BaseVC {
                 self.phoneView.isHidden = false
                 self.fieldsView.isHidden = true
             case .fields:
-            self.phoneView.isHidden = true
-            self.fieldsView.isHidden = false
+                self.phoneView.isHidden = true
+                self.fieldsView.isHidden = false
             }
         }).disposed(by: disposeBag)
         
@@ -221,7 +243,7 @@ class RegisterVC: BaseVC {
             .map { [unowned self] _ in
                 return self.phoneField.text
         }
-        .filter { $0 != nil }
+        .filter { !$0.isNilOrEmpty }
         .map({ $0! })
         .bind(to: requestCode).disposed(by: disposeBag)
         
@@ -237,6 +259,12 @@ class RegisterVC: BaseVC {
         .map({ $0! })
         .bind(to: requestReg).disposed(by: disposeBag)
         
+    }
+    
+    func successAuth() {
+        let vc = MainTabBar.getTabBar()
+        //        navigationController?.pushViewController(vc, animated: true)
+        navigationController?.setViewControllers([vc], animated: true)
     }
     
     func showKinds() {

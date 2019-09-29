@@ -12,6 +12,8 @@ enum NError: Error {
     case auth
     case iniciativeList
     case iniciativeFull
+    case reg
+    case forgot
     
     var localizedDescription: String {
         switch self {
@@ -21,6 +23,10 @@ enum NError: Error {
                 return "Произошла ошибка при попытке загрузки"
                 case .iniciativeFull:
                     return "Произошла ошибка при попытке загрузки"
+                    case .reg:
+                        return "Произошла ошибка при попытке регистрации пользователя"
+                        case .forgot:
+                            return "Произошла ошибка при попытке восстановления пароля"
         }
     }
 }

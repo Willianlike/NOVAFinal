@@ -57,6 +57,7 @@ class InactiveListtopBar: UIView {
         
         searchBtn.setImage(Images.search, for: .normal)
         searchBtn.tintColor = .topBarText
+        searchBtn.isHidden = true
         
         top.addSubview(titleLabel)
         top.addSubview(searchBtn)
