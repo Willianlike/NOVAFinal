@@ -41,6 +41,7 @@ class SelectorGroupView: UITableView, UITableViewDataSource, UITableViewDelegate
         dataSource = self
         selfHeight = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 0)
         selfHeight?.isActive = true
+        backgroundColor = .white
     }
     
     override func layoutSubviews() {

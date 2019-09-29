@@ -89,6 +89,8 @@ class IniciativeListingCell: UICollectionViewCell, ReusableView {
         
         dateLabel.font = .b3()
         dateLabel.textColor = .primaryText
+        dateLabel.adjustsFontSizeToFitWidth = true
+        dateLabel.minimumScaleFactor = 0.5
         
         title.numberOfLines = 2
         title.font = .b1(.semibold)

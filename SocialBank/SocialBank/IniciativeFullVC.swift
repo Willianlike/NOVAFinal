@@ -73,6 +73,8 @@ class IniciativeFullVC: BaseVC {
         descriptionView.textColor = .primaryText
         descriptionView.text = iniModel.description
         descriptionView.contentInset = .init(top: 0, left: -4, bottom: 0, right: 4)
+        descriptionView.backgroundColor = .white
+        descriptionView.textColor = .primaryText
         
         let voteContainer = UIView()
         voteContainer.addSubview(voteView)

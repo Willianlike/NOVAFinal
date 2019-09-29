@@ -78,11 +78,23 @@ class CustomSegmentedContrl: UIControl {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        let selectorWidth = frame.width
+        
+        let y =  frame.height - 3.0
+        selector = UIView.init(frame: CGRect.init(x: 0, y: y, width: selectorWidth, height: 3.0))
+        addSubview(selector)
         updateView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        
+        let selectorWidth = frame.width
+        
+        let y =  frame.height - 3.0
+        selector = UIView.init(frame: CGRect.init(x: 0, y: y, width: selectorWidth, height: 3.0))
+        addSubview(selector)
         updateView()
     }
     
@@ -115,11 +127,10 @@ class CustomSegmentedContrl: UIControl {
         
         let y =  frame.height - 3.0
         
-        selector = UIView.init(frame: CGRect.init(x: 0, y: y, width: selectorWidth, height: 3.0))
+        selector.frame = CGRect.init(x: 0, y: y, width: selectorWidth, height: 3.0)
         //selector.layer.cornerRadius = frame.height/2
         selector.backgroundColor = selectorColor
         
-        addSubview(selector)
         // Create a StackView
         
         let stackView = UIStackView.init(arrangedSubviews: buttons)
