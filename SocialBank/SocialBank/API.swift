@@ -11,6 +11,8 @@ import Moya
 
 enum API {
     case login(_ request: LoginRequest)
+    case codeSend(_ phone: String)
+    case register(_ request: RegRequest)
     case iniciativeList(_ request: IniciativeListRequest)
     case iniciativeFull(_ request: IniciativeFullRequest)
     case iniciativeComments(_ request: IniciativeCommentsRequest)
@@ -20,7 +22,7 @@ enum API {
     case registerPushToken(token: Data)
     case logout
     
-    static let baseStringUrl = "http://10.178.198.0:8080/"
+    static let baseStringUrl = "http://178.62.189.249/"
 }
 
 extension API: TargetType {
@@ -29,29 +31,33 @@ extension API: TargetType {
         var url = API.baseStringUrl
         switch self {
         case .login:
-            url += "cbrf-web/api/auth/login/"
+            url += "api/auth/login/"
+        case .codeSend:
+            url += "api/auth/getsms/"
+        case .register:
+            url += "api/auth/register/"
         case .logout:
-            url += "cbrf-web/api/auth/logout/"
+            url += "api/auth/logout/"
         case .iniciativeList:
-            url += "cbrf-web/api/initiative/all/"
+            url += "api/initiative/all/"
         case .iniciativeFull:
-            url += "cbrf-web/api/initiative/form/"
+            url += "api/initiative/form/"
         case .answer:
-            url += "cbrf-web/api/initiative/form/answer/"
+            url += "api/initiative/form/answer/"
         case .registerPushToken:
-            url += "cbrf-web/api/push/token/"
+            url += "api/push/token/"
         case .iniciativeComments:
-            url += "cbrf-web/api/initiative/comments/"
+            url += "api/initiative/comments/"
         case .sendComment:
-            url += "cbrf-web/api/initiative/comments/add/"
+            url += "api/initiative/comments/add/"
         case let .vote(vote, _):
             switch vote {
                 case .upvoted:
-                url += "cbrf-web/api/initiative/upvote/"
+                url += "api/initiative/upvote/"
                 case .downvoted:
-                url += "cbrf-web/api/initiative/downvote/"
+                url += "api/initiative/downvote/"
                 case .none:
-                url += "cbrf-web/api/initiative/unvote/"
+                url += "api/initiative/unvote/"
             }
         default:
             break
@@ -84,6 +90,12 @@ extension API: TargetType {
         case let .login(request):
             params["login"] = request.login
             params["password"] = request.pass
+            
+        case let .codeSend(phone):
+            params["phone"] = phone
+            
+        case let .register(request):
+            params = request.getParams()
             
         case let .iniciativeList(request):
             params["offset"] = request.offset

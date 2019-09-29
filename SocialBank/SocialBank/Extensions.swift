@@ -58,6 +58,17 @@ func setEqualW(_ view: UIView, views: UIView...) {
 }
 
 extension UIView {
+    
+    func applyShadow(height: CGFloat = 3, radius: CGFloat = 20,
+                     opacity: Float = 0.2, color: UIColor = .primaryText) {
+        layer.shadowColor = color.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 0)
+        layer.shadowRadius = height
+        layer.shadowOpacity = opacity
+        layer.masksToBounds = false
+        layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: radius).cgPath
+    }
+    
     @discardableResult
     func addBorders(edges: UIRectEdge,
                     color: UIColor = .border,

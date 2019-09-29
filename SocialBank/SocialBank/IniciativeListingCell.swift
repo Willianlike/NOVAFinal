@@ -15,11 +15,14 @@ class IniciativeListingCell: UICollectionViewCell, ReusableView {
     
     let icon = UIImageView()
     let chevron = UIImageView()
+    let date = UILabel()
     let title = UILabel()
     let descriptionLabel = UILabel()
     let votesView = VotesStackView()
     let stack = UIStackView()
     let dateLabel = UILabel()
+    
+    let circle = RatingCircleView()
     
     let voteChanged = PublishSubject<VoteChanged>()
     
@@ -29,14 +32,21 @@ class IniciativeListingCell: UICollectionViewCell, ReusableView {
     }
     
     func setupUI() {
+        backgroundColor = .white
+        applyShadow(height: 20, radius: 30)
         contentView.addSubview(stack)
         let firstView = UIStackView()
         let lastView = UIView()
+        let titleStack = UIStackView()
         lastView.addSubview(dateLabel)
         lastView.addSubview(votesView)
-        firstView.addArrangedSubview(icon)
-        firstView.addArrangedSubview(title)
+        firstView.addArrangedSubview(circle)
+        firstView.addArrangedSubview(titleStack)
         firstView.addArrangedSubview(chevron)
+        titleStack.addArrangedSubview(date)
+        titleStack.addArrangedSubview(title)
+        
+        setEqualW(titleStack, views: date, title)
         
         stack.addArrangedSubview(firstView)
         stack.addArrangedSubview(descriptionLabel)
@@ -50,25 +60,16 @@ class IniciativeListingCell: UICollectionViewCell, ReusableView {
             chevron.width == 13
         }
         
-        constrain(contentView, stack, firstView, icon, title, descriptionLabel, votesView, lastView, dateLabel)
-        { (contentView, stack, firstView, icon, title, descriptionLabel, votesView, lastView, dateLabel) in
+        constrain(contentView, stack, firstView, circle, title, descriptionLabel, votesView, lastView, dateLabel)
+        { (contentView, stack, firstView, circle, title, descriptionLabel, votesView, lastView, dateLabel) in
             stack.edges == inset(contentView.edges, 16, 16, 16, 16)
             
             firstView.width == stack.width
             descriptionLabel.width == stack.width
             lastView.width == stack.width
             
-            icon.width == 40
-            icon.height == 40
-//            icon.leading == firstView.leading
-//            icon.top >= firstView.top
-//            icon.bottom <= firstView.bottom
-//            icon.centerY == firstView.centerY
-//            
-//            title.leading == icon.trailing + 16
-//            title.top == firstView.top
-//            title.bottom == firstView.bottom
-//            title.trailing == firstView.trailing
+            circle.width == 60
+            circle.height == 80
             
             votesView.top == lastView.top
             votesView.bottom == lastView.bottom
@@ -81,6 +82,7 @@ class IniciativeListingCell: UICollectionViewCell, ReusableView {
             dateLabel.leading == lastView.leading
         }
         
+        
         descriptionLabel.numberOfLines = 5
         descriptionLabel.font = .b3()
         descriptionLabel.textColor = .primaryText
@@ -92,6 +94,9 @@ class IniciativeListingCell: UICollectionViewCell, ReusableView {
         title.font = .b1(.semibold)
         title.textColor = .primaryText
         
+        date.font = .b3()
+        date.textColor = .primaryText
+        
         stack.alignment = .center
         stack.axis = .vertical
         stack.distribution = .equalSpacing
@@ -102,9 +107,13 @@ class IniciativeListingCell: UICollectionViewCell, ReusableView {
         firstView.distribution = .fillProportionally
         firstView.spacing = 16
         
+        titleStack.alignment = .center
+        titleStack.axis = .vertical
+        titleStack.distribution = .equalSpacing
+        titleStack.spacing = 8
+        
         contentView.layer.cornerRadius = 30
-        contentView.layer.borderWidth = 1
-        contentView.layer.borderColor = UIColor.border.cgColor
+        layer.cornerRadius = 30
     }
     
     var disposeBag = DisposeBag()
@@ -124,6 +133,8 @@ class IniciativeListingCell: UICollectionViewCell, ReusableView {
         votesView.voteStatusChanged.asObservable().map { (item.id, $0) }
             .bind(to: voteChanged).disposed(by: disposeBag)
         dateLabel.text = item.dateText
+        circle.circle.value = CGFloat(item.rating)
+        date.text = "Дата: " + item.justDateText
     }
     
     override func prepareForReuse() {
@@ -136,7 +147,7 @@ class IniciativeListingCell: UICollectionViewCell, ReusableView {
         let descMaxH = "1\n2\n3\n4\n5".height(withConstrainedWidth: width, font: .b3())
         let descH = item.description.height(withConstrainedWidth: width, font: .b3())
         h += CGFloat(min(descH,descMaxH))
-        h += 35 + 40
+        h += 35 + 80
 //        let result =  + CGFloat(40 + 48 + 52 + 16)
 //        print(result)
 //        return result

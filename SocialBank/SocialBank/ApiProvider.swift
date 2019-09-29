@@ -61,11 +61,29 @@ class ApiProvider {
             .catchErrorJustReturn(.failure(.iniciativeList))
     }
     
-    typealias SendCommentResult = Result<SendCommentResponse, NError>
+    typealias SendCommentResult = Result<SuccessResponse, NError>
     func sendComment(request: SendCommentRequest) -> Observable<SendCommentResult>  {
         return provider.rx.request(.sendComment(request))
             .asObservable()
-            .mapObject(type: SendCommentResponse.self)
+            .mapObject(type: SuccessResponse.self)
+            .map { .success($0) }
+            .catchErrorJustReturn(.failure(.iniciativeList))
+    }
+    
+    typealias SendCodeResult = Result<SuccessResponse, NError>
+    func sendCode(phone: String) -> Observable<SendCodeResult>  {
+        return provider.rx.request(.codeSend(phone))
+            .asObservable()
+            .mapObject(type: SuccessResponse.self)
+            .map { .success($0) }
+            .catchErrorJustReturn(.failure(.iniciativeList))
+    }
+    
+    typealias RegResult = Result<SuccessResponse, NError>
+    func reg(request: RegRequest) -> Observable<RegResult>  {
+        return provider.rx.request(.register(request))
+            .asObservable()
+            .mapObject(type: SuccessResponse.self)
             .map { .success($0) }
             .catchErrorJustReturn(.failure(.iniciativeList))
     }

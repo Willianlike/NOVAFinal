@@ -17,6 +17,8 @@ def shared_pods
     pod 'SDWebImage'
     pod 'PKHUD'
     pod 'InputBarAccessoryView'
+    pod 'InputMask'
+pod 'MBCircularProgressBar'
 
 end
 

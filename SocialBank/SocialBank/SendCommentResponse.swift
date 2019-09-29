@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-struct SendCommentResponse: JSONDecodable {
+struct SuccessResponse: JSONDecodable {
     
     var success: Bool
     

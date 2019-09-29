@@ -113,13 +113,13 @@ class CustomSegmentedContrl: UIControl {
         
         let selectorWidth = frame.width / CGFloat(buttonTitles.count)
         
-        let y =    (self.frame.maxY - self.frame.minY) - 3.0
+        let y =  frame.height - 3.0
         
         selector = UIView.init(frame: CGRect.init(x: 0, y: y, width: selectorWidth, height: 3.0))
         //selector.layer.cornerRadius = frame.height/2
         selector.backgroundColor = selectorColor
-        addSubview(selector)
         
+        addSubview(selector)
         // Create a StackView
         
         let stackView = UIStackView.init(arrangedSubviews: buttons)
@@ -164,6 +164,8 @@ class CustomSegmentedContrl: UIControl {
                 UIView.animate(withDuration: 0.3, animations: {
                     
                     self.selector.frame.origin.x = selectorStartPosition
+                    self.selector.frame.origin.y = self.frame.height - 3
+                    self.selector.frame.size.width = self.frame.width / CGFloat(self.buttons.count)
                 })
                 
                 btn.setTitleColor(selectorTextColor, for: .normal)
@@ -196,6 +198,8 @@ class CustomSegmentedContrl: UIControl {
                 UIView.animate(withDuration: 0.3, animations: {
                     
                     self.selector.frame.origin.x = selectorStartPosition
+                    self.selector.frame.origin.y = self.frame.height - 3
+                    self.selector.frame.size.width = self.frame.width / CGFloat(self.buttons.count)
                 })
                 
                 btn.setTitleColor(selectorTextColor, for: .normal)
@@ -221,6 +225,8 @@ class CustomSegmentedContrl: UIControl {
         UIView.animate(withDuration: 0.3, animations: {
             
             self.selector.frame.origin.x = selectorStartPosition
+            self.selector.frame.origin.y = self.frame.height - 3
+            self.selector.frame.size.width = self.frame.width / CGFloat(self.buttons.count)
         })
         
         buttons[index].setTitleColor(selectorTextColor, for: .normal)

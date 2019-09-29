@@ -34,7 +34,11 @@ struct Images {
         return UIImage(named: "search")
     }
     static var barBack: UIImage? {
-        return UIImage(named: "barBack")
+        if profileKind == .person {
+            return UIImage(named: "barBack")
+        } else {
+            return UIImage(named: "barBackBusines")
+        }
     }
     static var mail: UIImage? {
         return UIImage(named: "mail")
@@ -85,5 +89,8 @@ struct Images {
     }
     static var chevron: UIImage? {
         return UIImage(named: "chevron")
+    }
+    static var phone: UIImage? {
+        return UIImage(named: "phone")
     }
 }

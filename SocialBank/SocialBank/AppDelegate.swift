@@ -9,6 +9,7 @@
 import UIKit
 
 var appNavigationVC: UINavigationController?
+var profileKind = ProfileKind.person
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
        // Override point for customization after application launch.
 
-        
+        UserDefaults.standard.authToken = nil
 //       UIApplication.shared.registerForRemoteNotifications()
        return true
     }

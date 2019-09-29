@@ -17,6 +17,7 @@ class DiscussionCollectionCell: UICollectionViewCell, ReusableView {
     let online = UILabel()
     let date = UILabel()
     let comment = UILabel()
+    let replyToView = UIView()
     
     let stack = UIStackView()
     let horizontalStack = UIView()
@@ -32,15 +33,14 @@ class DiscussionCollectionCell: UICollectionViewCell, ReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(item: DiscussionModel) {
-        print(item)
+    func setup(item: DiscussionModel, allItems: [DiscussionModel]) {
         name.text = item.name
         online.text = item.isOnline ? "Онлайн" : "Не онлайн"
         comment.text = item.comment
         img.setUrlImage(url: item.img, placeholder: Images.profile_hint)
         date.text = item.dateText
-        replyImg.isHidden = !item.replyTo
-        updateColors(replyed: item.replyTo)
+        replyImg.isHidden = !item.replyed
+        updateColors(replyed: item.replyed)
     }
     
     func updateColors(replyed: Bool) {
@@ -53,17 +53,21 @@ class DiscussionCollectionCell: UICollectionViewCell, ReusableView {
             name.textColor = .primaryText
             comment.textColor = .primaryText
         }
+        applyShadow(height: 15, radius: 30)
     }
     
     static func getHeight(w: CGFloat, item: DiscussionModel) -> CGFloat {
         var h = CGFloat(48)
         h += 40
-        let ww = w - 32 - (item.replyTo ? 24 : 0)
+        let ww = w - 32 - (item.replyed ? 24 : 0)
         h += item.comment.height(withConstrainedWidth: ww, font: .b3())
         return h
     }
     
     func setupUI() {
+        backgroundColor = .white
+        applyShadow(height: 15, radius: 30)
+        
         contentView.addSubview(stack)
         stack.addArrangedSubview(horizontalStack)
         stack.addArrangedSubview(commentStack)
@@ -147,9 +151,8 @@ class DiscussionCollectionCell: UICollectionViewCell, ReusableView {
             stack.edges == inset(view.edges, 16)
         }
         
-        layer.borderColor = UIColor.border.cgColor
-        layer.borderWidth = 1
-        layer.cornerRadius = imgSize.height / 2
+        contentView.layer.cornerRadius = 30
+        layer.cornerRadius = 30
     }
     
 }

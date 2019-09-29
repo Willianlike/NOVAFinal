@@ -70,18 +70,54 @@ class KnowledgeVC: UIViewController {
         let titles = ["Простым языком", "Инфографика", "Детям"]
         topBar.controlBar.commaSeperatedButtonTitles = titles.joined(separator: ",")
         topBar.controlBar.setIndex(index: 0)
-        
-        let mo = KnowledgeModel(id: 1, title: "title 1 title 1 title 1 title 1 title 1 title 1 title 1 title 1 ", comment: "commet commet commet commet commet commet commet commet commet commet commet commet commet commet commet commet commet commet commet commet commet commet commet commet commet commet commet commet ", image: "")
-        cells.accept([mo, mo, mo, mo, mo ,mo ,mo ,mo])
+        /*
+         https://ibb.co/47BwBW0
+         https://ibb.co/L6Cd67C
+         https://ibb.co/Pg5nWPk
+         https://ibb.co/rbGd5xS
+         */
+        cells.accept([KnowledgeModel(id: 1,
+                                     title: "Зачем стране нужен золотой резерв?",
+                                     comment: "Это золотые слитки как накопление, как «заначка на черный день» только для государства...",
+                                     image: "https://ibb.co/rbGd5xS"),
+                      KnowledgeModel(id: 2,
+                                     title: "ВВП? Что это?",
+                                     comment: "Стоимость всех товаров произведенных за год в стране",
+                                     image: "https://ibb.co/Pg5nWPk"),
+                      KnowledgeModel(id: 3,
+                                     title: "Минусы дефляции",
+                                     comment: "Товаров много, а денег в обороте мало, поэтому государству нужно напечатать еще денег.",
+                                     image: "https://ibb.co/L6Cd67C"),
+                      KnowledgeModel(id: 4,
+                                     title: "Зачем стране нужен золотой резерв?",
+                                     comment: "Это золотые слитки как накопление, как «заначка на черный день» только для государства...",
+                                     image: "https://ibb.co/47BwBW0"),
+                      KnowledgeModel(id: 5,
+                                     title: "ВВП? Что это?",
+                                     comment: "Стоимость всех товаров произведенных за год в стране",
+                                     image: "https://ibb.co/Pg5nWPk"),
+                      KnowledgeModel(id: 6,
+                                     title: "Минусы дефляции",
+                                     comment: "Товаров много, а денег в обороте мало, поэтому государству нужно напечатать еще денег.",
+                                     image: "https://ibb.co/L6Cd67C"),
+                      KnowledgeModel(id: 7,
+                                     title: "Зачем стране нужен золотой резерв?",
+                                     comment: "Это золотые слитки как накопление, как «заначка на черный день» только для государства...",
+                                     image: "https://ibb.co/47BwBW0"),
+                      KnowledgeModel(id: 8,
+                                     title: "ВВП? Что это?",
+                                     comment: "Стоимость всех товаров произведенных за год в стране",
+                                     image: "https://ibb.co/Pg5nWPk"),
+                      KnowledgeModel(id: 9,
+                                     title: "Минусы дефляции",
+                                     comment: "Товаров много, а денег в обороте мало, поэтому государству нужно напечатать еще денег.",
+                                     image: "https://ibb.co/L6Cd67C")])
     }
     
-//    var netVCDisposeBag = DisposeBag()
-//    func openIniciative(model: BankIniciativeModel) {
-//        netVCDisposeBag = DisposeBag()
-//        let vc = IniciativeFullVC(model: model, provider: vm.provider)
-//        vc.voteChanged.asObservable().bind(to: vm.voteChanged).disposed(by: netVCDisposeBag)
-//        navigationController?.pushViewController(vc, animated: true)
-//    }
+    func openInfo() {
+        let vc = ScrollVC(image: UIImage(named: "infoScreen")!)
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     func setupModel() {
         
@@ -92,7 +128,7 @@ class KnowledgeVC: UIViewController {
         collection.rx.itemSelected.withLatestFrom(cells) {($0, $1)}
             .subscribe(onNext: { [unowned self] data in
                 let model = data.1[data.0.row]
-//                self.openIniciative(model: model.getIniciativeModel())
+                self.openInfo()
             }).disposed(by: disposeBag)
     }
     

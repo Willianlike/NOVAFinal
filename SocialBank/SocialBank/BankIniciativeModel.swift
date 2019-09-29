@@ -17,6 +17,7 @@ struct BankIniciativeModel: JSONDecodable, Equatable {
     let video: String?
     var upvotes: Int
     var downvotes: Int
+    var rating: Double
     var voteStatus: VoteStatus
     let date: Date
     
@@ -26,6 +27,12 @@ struct BankIniciativeModel: JSONDecodable, Equatable {
         return "Голосование до " + formatter.string(from: date)
     }
     
+    var justDateText: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yy"
+        return formatter.string(from: date)
+    }
+    
     init(json: JSON) throws {
         id = try json["id"].reqString()
         title = try json["name"].reqString()
@@ -33,9 +40,10 @@ struct BankIniciativeModel: JSONDecodable, Equatable {
         image = json["image_url"].string
         video = json["video_url"].string
         upvotes = try json["upvotes"].reqInt()
+        rating = json["rating"].double ?? 10
         downvotes = try json["downvotes"].reqInt()
         voteStatus = VoteStatus(rawValue: json["vote"].stringValue) ?? .none
-        date = Date(timeIntervalSince1970: TimeInterval(try json["deadlineTs"].reqInt()))
+        date = Date(timeIntervalSince1970: TimeInterval(try json["deadlineTs"].reqInt() / 1000))
     }
     
     static func getMock() -> String {

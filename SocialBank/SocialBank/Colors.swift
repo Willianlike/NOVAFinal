@@ -15,10 +15,11 @@ extension UIColor {
     static let downvote = UIColor.init(hexString: "#FC5C5E")
     static let voteText = UIColor.init(hexString: "#FFFFFF")
     static let topBarText = UIColor.init(hexString: "#FFFFFF")
-    static let segmentActive = UIColor.init(hexString: "#FFFFFF")
+    static let segmentActive = UIColor.white
     static let segmentInactive = UIColor.segmentActive.withAlphaComponent(0.6)
     static let fieldActive = UIColor.init(hexString: "#1489B9")
     static let reply = UIColor.init(hexString: "#888AAD")
     static let ultraLight = UIColor.init(hexString: "#fafafa")
+    static let cirlce = UIColor.init(hexString: "#1796C7")
     
 }

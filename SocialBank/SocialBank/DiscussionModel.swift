@@ -17,7 +17,8 @@ struct DiscussionModel: JSONDecodable {
     let isOnline: Bool
     let date: Date
     let comment: String
-    var replyTo: Bool = false
+    var replyed: Bool = false
+    var replyTo: Int?
     
     var dateText: String {
         let formatter = DateFormatter()
@@ -28,6 +29,7 @@ struct DiscussionModel: JSONDecodable {
     init(json: JSON) throws {
         img = json["avatar"].stringValue
         id = try json["id"].reqInt()
+        replyTo = json["replyTo"].int
         name = try json["nickname"].reqString()
         comment = try json["text"].reqString()
         isOnline = json["i"].boolValue

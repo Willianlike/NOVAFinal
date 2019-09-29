@@ -37,12 +37,17 @@ class KnowledgeCollectionCell: UICollectionViewCell, ReusableView {
     static func getHeight(w: CGFloat, item: KnowledgeModel) -> CGFloat {
         var h = CGFloat(40)
         let ww = w - 32
-        h += item.title.height(withConstrainedWidth: ww, font: .b2(.bold))
+        let ww2 = ww - 39 - 8 - 20
+        
+        print(ww, ww2)
+        h += max(36, item.title.height(withConstrainedWidth: ww2, font: .b2(.bold)))
         h += item.comment.height(withConstrainedWidth: ww, font: .b3())
         return h
     }
     
     func setupUI() {
+        backgroundColor = .white
+        applyShadow(height: 15, radius: 30)
         topStack.addArrangedSubview(img)
         topStack.addArrangedSubview(title)
         topStack.addArrangedSubview(chevron)
@@ -88,9 +93,8 @@ class KnowledgeCollectionCell: UICollectionViewCell, ReusableView {
         img.layer.cornerRadius = imgSize.height / 2
         img.clipsToBounds = true
         
-        contentView.layer.cornerRadius = imgSize.height / 2
-        contentView.layer.borderColor = UIColor.border.cgColor
-        contentView.layer.borderWidth = 1
+        contentView.layer.cornerRadius = 30
+        layer.cornerRadius = 30
     }
     
 }

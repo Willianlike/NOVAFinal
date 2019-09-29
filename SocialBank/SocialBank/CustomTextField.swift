@@ -13,11 +13,12 @@ import Cartography
 
 class CustomTextField: UIView {
     
-    let field = UITextField()
+    let field: UITextField
     let img = UIImageView()
     let border = UIView()
     
-    init() {
+    init(field: UITextField = UITextField()) {
+        self.field = field
         super.init(frame: CGRect())
         setupUI()
     }

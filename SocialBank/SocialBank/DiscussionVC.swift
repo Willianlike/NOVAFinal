@@ -139,7 +139,7 @@ class DiscussionVC: BaseVC, InputBarAccessoryViewDelegate {
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         guard !text.isEmpty else { return }
-        let reply: Int? = comments.value.first(where: { $0.replyTo })?.id
+        let reply: Int? = comments.value.first(where: { $0.replyed })?.id
         let request = SendCommentRequest(id: model.id, replyTo: reply, text: text)
         sendMessage.onNext(request)
     }
@@ -154,7 +154,7 @@ extension DiscussionVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiscussionCollectionCell.reuseIdentifier, for: indexPath) as! DiscussionCollectionCell
         let item = comments.value[indexPath.row]
-        cell.setup(item: item)
+        cell.setup(item: item, allItems: comments.value)
         return cell
     }
     
@@ -162,9 +162,9 @@ extension DiscussionVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLa
         var newComms = comments.value
         for i in newComms.indices {
             if i == indexPath.row {
-                newComms[i].replyTo = !newComms[i].replyTo
+                newComms[i].replyed = !newComms[i].replyed
             } else {
-                newComms[i].replyTo = false
+                newComms[i].replyed = false
             }
         }
         comments.accept(newComms)

@@ -11,10 +11,12 @@ import SwiftyJSON
 
 struct LoginResponse: JSONDecodable {
     var token: String
+    var kind: ProfileKind
     
     init(json: JSON) throws {
         if json["success"].boolValue {
             token = try json["basic"].reqString()
+            kind = ProfileKind(rawValue: json["kind"].stringValue) ?? .person
         } else {
             throw NError.auth
         }
