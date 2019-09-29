@@ -91,6 +91,11 @@ class DiscussionVC: BaseVC, InputBarAccessoryViewDelegate {
             self.collection.reloadData()
             }).disposed(by: disposeBag)
         
+        Observable.of(requestComments.asObservable().map({ _ in Void()}), sendMessage.asObservable().map({ _ in Void()})).merge()
+        .subscribe(onNext: { result in
+            HUD.show(.progress)
+            }).disposed(by: disposeBag)
+        
         requestComments.asObservable().flatMap { [unowned self] in
             self.provider.getIniciativeComments(request: IniciativeCommentsRequest(id: self.model.id))
         }
@@ -177,7 +182,7 @@ extension DiscussionVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let w = collectionView.bounds.width - 32
         let item = comments.value[indexPath.row]
-        return CGSize(width: w, height: DiscussionCollectionCell.getHeight(w: w, item: item))
+        return CGSize(width: w, height: DiscussionCollectionCell.getHeight(w: w, item: item, allItems: comments.value))
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

@@ -17,7 +17,7 @@ class DiscussionCollectionCell: UICollectionViewCell, ReusableView {
     let online = UILabel()
     let date = UILabel()
     let comment = UILabel()
-    let replyToView = UIView()
+    let replyToLabel = UILabel()
     
     let stack = UIStackView()
     let horizontalStack = UIView()
@@ -41,6 +41,19 @@ class DiscussionCollectionCell: UICollectionViewCell, ReusableView {
         date.text = item.dateText
         replyImg.isHidden = !item.replyed
         updateColors(replyed: item.replyed)
+        if let repl = item.replyTo, let itemRepl = allItems.first(where: { $0.id == repl }) {
+            let text = DiscussionCollectionCell.getNSAttr(item: itemRepl)
+            replyToLabel.attributedText = text
+            replyToLabel.isHidden = false
+        } else {
+            replyToLabel.isHidden = true
+        }
+    }
+    
+    static func getNSAttr(item: DiscussionModel) -> NSAttributedString {
+        let text = NSMutableAttributedString(string: "В ответ на сообщение: \(item.name)", attributes: [NSAttributedString.Key.font : UIFont.b3(.semibold), NSAttributedString.Key.foregroundColor : UIColor.primaryText])
+        text.append(NSAttributedString(string: "\n\"\(item.comment)\"\n", attributes: [NSAttributedString.Key.font : UIFont.b3(), NSAttributedString.Key.foregroundColor : UIColor.primaryText]))
+        return text
     }
     
     func updateColors(replyed: Bool) {
@@ -56,11 +69,15 @@ class DiscussionCollectionCell: UICollectionViewCell, ReusableView {
         applyShadow(height: 15, radius: 30)
     }
     
-    static func getHeight(w: CGFloat, item: DiscussionModel) -> CGFloat {
+    static func getHeight(w: CGFloat, item: DiscussionModel, allItems: [DiscussionModel]) -> CGFloat {
         var h = CGFloat(48)
         h += 40
         let ww = w - 32 - (item.replyed ? 24 : 0)
         h += item.comment.height(withConstrainedWidth: ww, font: .b3())
+        if let repl = item.replyTo, let itemRepl = allItems.first(where: { $0.id == repl }) {
+            let text = getNSAttr(item: itemRepl)
+            h += text.height(containerWidth: w - 32) + 8
+        }
         return h
     }
     
@@ -69,8 +86,11 @@ class DiscussionCollectionCell: UICollectionViewCell, ReusableView {
         applyShadow(height: 15, radius: 30)
         
         contentView.addSubview(stack)
+        stack.addArrangedSubview(replyToLabel)
         stack.addArrangedSubview(horizontalStack)
         stack.addArrangedSubview(commentStack)
+        
+        replyToLabel.isHidden = true
         
         commentStack.addArrangedSubview(replyImg)
         commentStack.addArrangedSubview(comment)
@@ -144,8 +164,10 @@ class DiscussionCollectionCell: UICollectionViewCell, ReusableView {
         img.layer.cornerRadius = imgSize.height / 2
         img.clipsToBounds = true
         
+        replyToLabel.numberOfLines = 0
+        
         setEqualW(nameStack, views: name, online)
-        setEqualW(stack, views: commentStack, horizontalStack)
+        setEqualW(stack, views: commentStack, horizontalStack, replyToLabel)
         
         constrain(stack, contentView) { (stack, view) in
             stack.edges == inset(view.edges, 16)

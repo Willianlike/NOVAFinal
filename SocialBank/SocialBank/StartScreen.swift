@@ -35,10 +35,18 @@ class StartScreen: UIViewController {
         
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        scrollView.frame = view.bounds
+        for i in imgs {
+            i.frame.size = view.bounds.size
+        }
+    }
+    
     func setupUI() {
         view.addSubview(scrollView)
         scrollView.frame = view.bounds
-        scrollView.contentSize = CGSize(width: view.frame.width * CGFloat(2), height: view.frame.height)
+        scrollView.contentSize = CGSize(width: view.bounds.width * CGFloat(2), height: view.bounds.height)
         scrollView.isPagingEnabled = true
         scrollView.isScrollEnabled = false
         scrollView.showsHorizontalScrollIndicator = false
@@ -47,8 +55,19 @@ class StartScreen: UIViewController {
         let img1 = UIImageView()
         let img2 = UIImageView()
         
-        let imgs = [img1, img2]
+        let v1 = UIView()
+        let v2 = UIView()
+        
+        let imgs = [v1, v2]
         self.imgs = imgs
+        
+        v1.addSubview(img1)
+        v2.addSubview(img2)
+        
+        constrain(v1, v2, img1, img2) { (v1, v2, img1, img2) in
+        img1.edges == v1.edges
+        img2.edges == v2.edges
+        }
         
         img1.image = UIImage(named: "per1")
         img2.image = UIImage(named: "per1")
@@ -61,9 +80,10 @@ class StartScreen: UIViewController {
             }).disposed(by: disposeBag)
         
         for i in 0 ..< imgs.count {
-            imgs[i].frame = CGRect(x: view.frame.width * CGFloat(i), y: 0, width: view.frame.width, height: view.frame.height - UIApplication.shared.statusBarFrame.height)
+            imgs[i].frame = CGRect(x: view.bounds.width * CGFloat(i), y: 0, width: view.bounds.width, height: view.bounds.height - UIApplication.shared.statusBarFrame.height)
             scrollView.addSubview(imgs[i])
         }
+        self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
         
     }
     
@@ -74,10 +94,24 @@ class StartScreen: UIViewController {
         navigationController?.setViewControllers([vc], animated: true)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            if let error = error {
+                print("D'oh: \(error.localizedDescription)")
+            } else {
+                DispatchQueue.main.async {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
+            }
+        }
+    }
+    
     func scrollToNext() {
         DispatchQueue.main.async { [unowned self] in
-            if self.scrollView.contentSize.width > self.view.frame.width + self.scrollView.contentOffset.x  {
-                self.scrollView.setContentOffset(CGPoint(x: self.scrollView.contentOffset.x + self.view.frame.width, y: 0), animated: true)
+            if self.scrollView.contentSize.width > self.view.bounds.width + self.scrollView.contentOffset.x  {
+                self.scrollView.setContentOffset(CGPoint(x: self.scrollView.contentOffset.x + self.view.bounds.width, y: 0), animated: true)
             } else {
                 self.showLogin()
             }
@@ -89,7 +123,7 @@ class StartScreen: UIViewController {
 extension StartScreen: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let pageIndex = round(scrollView.contentOffset.x/view.frame.width)
+        let pageIndex = round(scrollView.contentOffset.x/view.bounds.width)
         
         let maximumHorizontalOffset: CGFloat = scrollView.contentSize.width - scrollView.frame.width
         let currentHorizontalOffset: CGFloat = scrollView.contentOffset.x
