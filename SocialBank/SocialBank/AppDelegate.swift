@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import UserNotifications
 
 var appNavigationVC: UINavigationController?
 var profileKind = ProfileKind.person
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
     func application(_ application: UIApplication,
                didFinishLaunchingWithOptions launchOptions:
@@ -20,8 +21,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        // Override point for customization after application launch.
 
         UserDefaults.standard.authToken = nil
+
+        UNUserNotificationCenter.current().delegate = self
 //       UIApplication.shared.registerForRemoteNotifications()
        return true
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
+    {
+        completionHandler([.alert, .badge, .sound])
     }
 
     func application(_ application: UIApplication,
